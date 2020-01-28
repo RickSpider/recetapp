@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">recetapp</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="search_title">Buscar</string>
+    <string name="register">Registrar</string>
+    <string name="login">Iniciar</string>
+    <string name="paciente">Paciente</string>
+    <string name="medico">Médico</string>
+    <string name="password">Contraseña</string>
+    <string name="username">Usuario</string>
+</resources>

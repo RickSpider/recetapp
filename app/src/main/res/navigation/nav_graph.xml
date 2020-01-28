@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.blackspider.recetapp.fragments.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_registroFragment"
+            app:destination="@id/registroFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_pacienteFragment"
+            app:destination="@id/pacienteFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_medicoFragment"
+            app:destination="@id/medicoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pacienteFragment"
+        android:name="com.blackspider.recetapp.fragments.PacienteFragment"
+        android:label="fragment_paciente"
+        tools:layout="@layout/fragment_paciente" >
+        <action
+            android:id="@+id/action_pacienteFragment_to_perfilFragment"
+            app:destination="@id/perfilFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registroFragment"
+        android:name="com.blackspider.recetapp.fragments.RegistroFragment"
+        android:label="fragment_registro"
+        tools:layout="@layout/fragment_registro" />
+    <fragment
+        android:id="@+id/perfilFragment"
+        android:name="com.blackspider.recetapp.fragments.PerfilFragment"
+        android:label="fragment_perfil"
+        tools:layout="@layout/fragment_perfil" >
+        <action
+            android:id="@+id/action_perfilFragment_to_pacienteFragment2"
+            app:destination="@id/pacienteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/medicoFragment"
+        android:name="com.blackspider.recetapp.fragments.MedicoFragment"
+        android:label="fragment_medico"
+        tools:layout="@layout/fragment_medico" >
+        <action
+            android:id="@+id/action_medicoFragment_to_perfilFragment"
+            app:destination="@id/perfilFragment" />
+    </fragment>
+</navigation>
