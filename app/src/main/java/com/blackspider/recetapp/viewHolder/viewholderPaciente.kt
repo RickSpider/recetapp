@@ -10,12 +10,14 @@ class viewholderPaciente (itemView : View): RecyclerView.ViewHolder(itemView){
     val tvfullname : TextView
     val tvci: TextView
     val tvcelular : TextView
+    val tvemail : TextView
 
     init {
 
         tvfullname = itemView.findViewById(R.id.tvMedicoFullName)
         tvci = itemView.findViewById(R.id.tvCI)
         tvcelular = itemView.findViewById(R.id.tvCelular)
+        tvemail = itemView.findViewById(R.id.tvEmail)
 
     }
 

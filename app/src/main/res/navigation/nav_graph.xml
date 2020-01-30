@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_pacienteFragment_to_perfilFragment"
             app:destination="@id/perfilFragment" />
+        <argument
+            android:name="pacienteid"
+            app:argType="long" />
     </fragment>
     <fragment
         android:id="@+id/registroFragment"
@@ -42,6 +45,8 @@
         <action
             android:id="@+id/action_perfilFragment_to_pacienteFragment2"
             app:destination="@id/pacienteFragment" />
+        <argument android:name="pacienteid"
+            app:argType="long" />
     </fragment>
     <fragment
         android:id="@+id/medicoFragment"
@@ -50,6 +55,6 @@
         tools:layout="@layout/fragment_medico" >
         <action
             android:id="@+id/action_medicoFragment_to_perfilFragment"
-            app:destination="@id/perfilFragment" />
+            app:destination="@+id/perfilFragment" />
     </fragment>
 </navigation>

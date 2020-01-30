@@ -34,14 +34,12 @@
                 tool:text="Ricardo Gonzalez" />
 
             <TextView
-                android:id="@+id/tvCI"
+                android:id="@+id/tvEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
-                android:fontFamily="@font/work_sans"
                 android:text="TextView"
-                android:textSize="17sp"
-                tool:text="4524164" />
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/tvCelular"
@@ -52,6 +50,17 @@
                 android:text="TextView"
                 android:textSize="17sp"
                 tool:text="0961748907" />
+
+            <TextView
+                android:id="@+id/tvCI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:fontFamily="@font/work_sans"
+                android:text="TextView"
+                android:textSize="17sp"
+                tool:text="4524164" />
+
         </LinearLayout>
 
         <ImageView

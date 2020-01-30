@@ -49,6 +49,7 @@ class adapterPaciente(var lpacientes : ArrayList<mMedicoPaciente>): RecyclerView
         holder.tvfullname.text = "${mpaciente!!.mpersona.nombre} ${mpaciente.mpersona.apellido}"
         holder.tvcelular.text = mpaciente!!.mpersona.celular
         holder.tvci.text = mpaciente!!.mpersona.ci
+        holder.tvemail.text = mpaciente!!.mpersona.email
     }
 
     fun setOnClickListener(listener : View.OnClickListener){
@@ -79,7 +80,9 @@ class adapterPaciente(var lpacientes : ArrayList<mMedicoPaciente>): RecyclerView
 
                     for(mmp in lpacientes1){
 
-                        if (mmp.mpkmedicopaciente.mpaciente!!.mpersona.nombre!!.toLowerCase().contains(charString)){
+                        val nc = mmp.mpkmedicopaciente.mpaciente!!.mpersona.nombre!!+" "+mmp.mpkmedicopaciente.mpaciente!!.mpersona.apellido!!
+
+                        if (nc.toLowerCase().contains(charString)){
 
                             filterList.add(mmp)
 

@@ -11,12 +11,14 @@ class viewholderReceta (itemView : View): RecyclerView.ViewHolder(itemView){
     val tvmedico : TextView
     val tvestado : TextView
     val tvfecha : TextView
+    val tvdiagnostico : TextView
 
     init {
 
         tvmedico = itemView.findViewById(R.id.tvMedico)
         tvestado = itemView.findViewById(R.id.tvEstado)
         tvfecha = itemView.findViewById(R.id.tvFecha)
+        tvdiagnostico = itemView.findViewById(R.id.tvDiagnostico)
 
     }
 

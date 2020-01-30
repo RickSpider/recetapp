@@ -46,6 +46,7 @@ class adapterReceta (val lrecetas : ArrayList<mReceta>):RecyclerView.Adapter<Rec
         val mreceta = lrecetas.get(position)
 
         holder.tvmedico.text = "${mreceta.mmedico!!.mpersona.nombre} ${mreceta.mmedico!!.mpersona.apellido}"
+        holder.tvdiagnostico.text = mreceta.diagnostico
         holder.tvestado.text = mreceta.estado
         holder.tvfecha.text = mreceta.fchreceta
 

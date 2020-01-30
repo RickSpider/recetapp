@@ -59,11 +59,11 @@ class MedicoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         mCompositeDisposable = CompositeDisposable()
-        loadJsonMedico()
+      //  loadJsonMedico()
         loadJsonPacientes()
     }
 
-    private fun loadJsonMedico() {
+   /* private fun loadJsonMedico() {
         val retrofit = connector().create(requestMedico::class.java)
         mCompositeDisposable.add(
             retrofit.getOneMedico(medicoid)
@@ -71,7 +71,7 @@ class MedicoFragment : Fragment() {
                 .subscribeOn(Schedulers.io())
                 .subscribe(this::handleMedico, this::handleError)
         )
-    }
+    }*/
 
     private fun loadJsonPacientes() {
         val retrofit = connector().create(requestMedicoPaciente::class.java)
@@ -89,7 +89,8 @@ class MedicoFragment : Fragment() {
 
         adapter.setOnClickListener(View.OnClickListener {
 
-            val action = MedicoFragmentDirections.actionMedicoFragmentToPerfilFragment()
+            val pacienteid: Long = lmedicopacientes[rvPacientes.getChildAdapterPosition(it)].mpkmedicopaciente.mpaciente!!.pacienteid
+            val action = MedicoFragmentDirections.actionMedicoFragmentToPerfilFragment(pacienteid)
             findNavController().navigate(action)
 
         })
@@ -100,11 +101,11 @@ class MedicoFragment : Fragment() {
 
     }
 
-    fun handleMedico (mMedico: mMedico){
+  /*  fun handleMedico (mMedico: mMedico){
 
         //tvMedicoFullName.text = mMedico.mpersona.nombre+" "+mMedico.mpersona.apellido
 
-    }
+    }*/
 
 
 

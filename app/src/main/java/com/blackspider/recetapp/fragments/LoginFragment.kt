@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 
 import com.blackspider.recetapp.R
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -16,6 +17,8 @@ import kotlinx.android.synthetic.main.fragment_login.*
  * A simple [Fragment] subclass.
  */
 class LoginFragment : Fragment() {
+
+    private val args : PacienteFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +36,7 @@ class LoginFragment : Fragment() {
             if(rbPaciente.isChecked || rbMedico.isChecked) {
 
                 if (rbPaciente.isChecked) {
-                    val action = LoginFragmentDirections.actionLoginFragmentToPacienteFragment()
+                    val action = LoginFragmentDirections.actionLoginFragmentToPacienteFragment(args.pacienteid)
                     findNavController().navigate(action)
                 }
 

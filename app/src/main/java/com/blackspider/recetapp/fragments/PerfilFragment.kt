@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 
 import com.blackspider.recetapp.R
 import com.blackspider.recetapp.model.mPaciente
@@ -17,6 +18,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_perfil.*
+import kotlin.properties.Delegates
 
 
 /**
@@ -25,7 +27,8 @@ import kotlinx.android.synthetic.main.fragment_perfil.*
 class PerfilFragment : Fragment() {
 
     private lateinit var mCompositeDisposable : CompositeDisposable
-    private val pacienteid: Long = 1
+   // private var pacienteid : Long = 1
+    private val args : PerfilFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,10 +44,12 @@ class PerfilFragment : Fragment() {
         ibReceta.setOnClickListener{
 
 
-            val action = PerfilFragmentDirections.actionPerfilFragmentToPacienteFragment2()
+            val action = PerfilFragmentDirections.actionPerfilFragmentToPacienteFragment2(args.pacienteid)
             findNavController().navigate(action)
 
         }
+
+        //pacienteid = args
 
         mCompositeDisposable = CompositeDisposable()
 
@@ -55,7 +60,7 @@ class PerfilFragment : Fragment() {
     private fun loadJsonPaciente() {
         val retrofit = connector().create(requestPaciente::class.java)
         mCompositeDisposable.add(
-            retrofit.getPaciente(pacienteid)
+            retrofit.getPaciente(args.pacienteid)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(this::handlePaciente, this::handleError)
