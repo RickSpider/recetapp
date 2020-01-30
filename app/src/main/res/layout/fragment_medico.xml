@@ -4,8 +4,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tool="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.MedicoFragment">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimary"
+        android:elevation="8dp"
+        android:src="@drawable/ic_plus"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="@+id/appBarLayout2"
+        app:layout_constraintVertical_bias="0.9" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout2"
@@ -24,21 +37,12 @@
             android:paddingEnd="12dp"
             android:paddingRight="12dp"
             app:contentInsetStart="0dp"
-            app:title="@string/app_name" />
-    </com.google.android.material.appbar.AppBarLayout>
+            app:title="@string/app_name"
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:src="@android:drawable/ic_menu_add"
-        tool:layout_constraintBottom_toBottomOf="@+id/linearLayout"
-        tool:layout_constraintEnd_toEndOf="parent"
-        tool:layout_constraintHorizontal_bias="0.9"
-        tool:layout_constraintStart_toStartOf="parent"
-        tool:layout_constraintTop_toTopOf="parent"
-        tool:layout_constraintVertical_bias="0.95" />
+            />
+
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -50,55 +54,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout2">
 
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="Médico"
-            android:textAlignment="center"
-            android:textColor="@color/colorPrimary"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvMedicoFullName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="TextView"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            tools:text="Ricardo Gonzalez" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/editText10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="Buscar Paciente"
-                android:inputType="textPersonName" />
-
-            <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="60dp"
-                android:layout_height="50dp"
-                android:layout_weight="0"
-                android:src="@android:drawable/ic_search_category_default" />
-        </LinearLayout>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvPacientes"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="5dp" />
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/colorPrimary" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

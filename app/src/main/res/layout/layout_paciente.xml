@@ -28,7 +28,7 @@
                 android:layout_margin="3dp"
                 android:fontFamily="@font/work_sans_bold"
                 android:text="TextView"
-                android:textColor="@android:color/black"
+                android:textColor="@color/colorPrimary"
                 android:textSize="21sp"
                 android:textStyle="bold"
                 tool:text="Ricardo Gonzalez" />

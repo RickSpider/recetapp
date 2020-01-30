@@ -3,11 +3,15 @@ package com.blackspider.recetapp.fragments
 
 import android.os.Bundle
 import android.view.*
+
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
+import androidx.core.view.MenuItemCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.transition.TransitionManager
 import com.blackspider.recetapp.R
 import com.blackspider.recetapp.adapter.adapterPaciente
 import com.blackspider.recetapp.model.mMedico
@@ -29,6 +33,7 @@ class MedicoFragment : Fragment() {
 
     val medicoid : Long = 2
     private lateinit var mCompositeDisposable : CompositeDisposable
+    private lateinit var adapter : adapterPaciente
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +52,8 @@ class MedicoFragment : Fragment() {
 
         return view
     }
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -78,7 +85,7 @@ class MedicoFragment : Fragment() {
 
     fun handlePacientes(lmedicopacientes: ArrayList<mMedicoPaciente>){
 
-        var adapter = adapterPaciente(lmedicopacientes)
+        adapter = adapterPaciente(lmedicopacientes)
 
         adapter.setOnClickListener(View.OnClickListener {
 
@@ -95,7 +102,7 @@ class MedicoFragment : Fragment() {
 
     fun handleMedico (mMedico: mMedico){
 
-        tvMedicoFullName.text = mMedico.mpersona.nombre+" "+mMedico.mpersona.apellido
+        //tvMedicoFullName.text = mMedico.mpersona.nombre+" "+mMedico.mpersona.apellido
 
     }
 
@@ -117,9 +124,50 @@ class MedicoFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
-        menuInflater.inflate(R.menu.toolbar_menu, menu)
         super.onCreateOptionsMenu(menu, menuInflater)
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        val menuItem = menu.findItem(R.id.action_search)
+        val searchView = MenuItemCompat.getActionView(menuItem) as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+               return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+
+                if (adapter != null ){
+
+                    adapter.filter.filter(newText)
+
+                }
+                return true
+            }
+
+
+        })
+    }
+
+    //bloque para la barra de busqueda
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_search -> {
+                TransitionManager.beginDelayedTransition(
+                    activity!!.findViewById<View>(
+                        R.id.app_bar
+                    ) as ViewGroup
+                )
+                MenuItemCompat.getActionProvider(item)
+                return true
+
+
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 
+
 }
+
+

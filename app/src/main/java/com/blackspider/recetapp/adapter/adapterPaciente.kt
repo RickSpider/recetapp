@@ -3,13 +3,20 @@ package com.blackspider.recetapp.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
+import com.blackspider.recetapp.MainActivity
 import com.blackspider.recetapp.R
 import com.blackspider.recetapp.model.mMedicoPaciente
+import com.blackspider.recetapp.model.mPaciente
 import com.blackspider.recetapp.viewHolder.viewholderPaciente
+import java.util.*
+import kotlin.collections.ArrayList
 
-class adapterPaciente(val lpacientes : ArrayList<mMedicoPaciente>): RecyclerView.Adapter<RecyclerView.ViewHolder>(), View.OnClickListener{
+class adapterPaciente(var lpacientes : ArrayList<mMedicoPaciente>): RecyclerView.Adapter<RecyclerView.ViewHolder>(), View.OnClickListener, Filterable{
 
+    private var lpacientes1 = lpacientes
     private lateinit var listener: View.OnClickListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -52,6 +59,51 @@ class adapterPaciente(val lpacientes : ArrayList<mMedicoPaciente>): RecyclerView
 
     override fun onClick(v: View?) {
         if (listener != null)   listener!!.onClick(v)
+    }
+
+
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+
+                val charString : String = constraint.toString()
+
+                if (charString.isEmpty()){
+
+                    lpacientes = lpacientes1
+
+                }else{
+
+                    var filterList : ArrayList<mMedicoPaciente> = ArrayList()
+
+                    for(mmp in lpacientes1){
+
+                        if (mmp.mpkmedicopaciente.mpaciente!!.mpersona.nombre!!.toLowerCase().contains(charString)){
+
+                            filterList.add(mmp)
+
+                        }
+
+                    }
+
+                    lpacientes = filterList
+
+                }
+
+                val filterResult = FilterResults()
+                filterResult.values = lpacientes
+
+                return filterResult
+
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                lpacientes = results!!.values as ArrayList<mMedicoPaciente>
+                notifyDataSetChanged()
+            }
+
+        }
     }
 
 
