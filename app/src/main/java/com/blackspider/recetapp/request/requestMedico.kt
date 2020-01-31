@@ -7,7 +7,7 @@ import retrofit2.http.Path
 
 interface requestMedico{
 
-    @GET("/medico/{id}")
+    @GET("medico/{id}")
     fun getOneMedico(@Path("id") id :  Long): Observable<mMedico>
 
 

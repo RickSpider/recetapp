@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_login.*
  */
 class LoginFragment : Fragment() {
 
-    private val args : PacienteFragmentArgs by navArgs()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +36,7 @@ class LoginFragment : Fragment() {
             if(rbPaciente.isChecked || rbMedico.isChecked) {
 
                 if (rbPaciente.isChecked) {
-                    val action = LoginFragmentDirections.actionLoginFragmentToPacienteFragment(args.pacienteid)
+                    val action = LoginFragmentDirections.actionLoginFragmentToPacienteFragment(1)
                     findNavController().navigate(action)
                 }
 

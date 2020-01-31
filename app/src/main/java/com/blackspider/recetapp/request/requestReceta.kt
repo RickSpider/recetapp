@@ -9,7 +9,7 @@ import kotlin.collections.ArrayList
 
 interface requestReceta{
 
-    @GET("/receta/paciente/{pacienteid}")
+    @GET("receta/paciente/{pacienteid}")
     fun getRecetaPaciente(@Path("pacienteid") pacienteid :  Long): Observable<ArrayList<mReceta>>
 
 }

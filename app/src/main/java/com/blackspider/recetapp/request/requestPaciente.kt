@@ -7,7 +7,7 @@ import retrofit2.http.Path
 
 interface requestPaciente{
 
-    @GET("/paciente/{pacienteid}")
+    @GET("paciente/{pacienteid}")
     fun getPaciente(@Path("pacienteid") pacienteid :  Long): Observable<mPaciente>
 
 }
