@@ -15,6 +15,7 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:layout_gravity="center"
             android:layout_margin="5dp"
             android:src="@drawable/ic_pills" />
 
@@ -29,7 +30,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="3dp"
-                android:text="TextView" />
+                android:fontFamily="@font/work_sans_bold"
+                android:text="TextView"
+                android:textSize="18dp" />
 
             <TextView
                 android:id="@+id/tvIndicaciones"

@@ -28,7 +28,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="4dp">
 
                 <ImageView
                     android:id="@+id/imageView5"
@@ -67,7 +68,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="4dp">
 
                 <ImageView
                     android:id="@+id/imageView6"
@@ -114,13 +116,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingStart="2dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="2dp"
+                android:paddingBottom="8dp">
 
                 <TextView
                     android:id="@+id/textView10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="4dp"
                     android:layout_marginBottom="4dp"
@@ -132,15 +138,22 @@
                     android:id="@+id/tvFecha"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginBottom="4dp"
                     android:text="TextView"
-                    android:textSize="14sp" />
+                    android:textAlignment="textEnd"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/tvDiagnostico"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginBottom="4dp"
                     android:text="TextView"
                     android:textSize="14sp" />
 
