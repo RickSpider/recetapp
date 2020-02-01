@@ -91,6 +91,14 @@ class PacienteFragment : Fragment() {
 
         var adapter = adapterReceta(lreceta)
 
+        adapter.setOnClickListener(View.OnClickListener{
+
+            val recetaid: Long = lreceta[rvRecetas.getChildAdapterPosition(it)].recetaid
+            val action = PacienteFragmentDirections.actionPacienteFragmentToRecetaFragment(recetaid)
+            findNavController().navigate(action)
+
+        })
+
         rvRecetas.layoutManager = LinearLayoutManager(this.context)
         rvRecetas.adapter = adapter
 

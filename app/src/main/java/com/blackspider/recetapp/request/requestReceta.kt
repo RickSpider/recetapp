@@ -1,15 +1,21 @@
 package com.blackspider.recetapp.request
 
 import com.blackspider.recetapp.model.mReceta
+import com.blackspider.recetapp.model.mRecetaDetalle
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
-import java.util.*
 import kotlin.collections.ArrayList
 
 interface requestReceta{
 
     @GET("receta/paciente/{pacienteid}")
     fun getRecetaPaciente(@Path("pacienteid") pacienteid :  Long): Observable<ArrayList<mReceta>>
+
+    @GET("receta/detalles/{recetaid}")
+    fun getRecetaDetalles(@Path("recetaid") recetaid : Long): Observable<ArrayList<mRecetaDetalle>>
+
+    @GET("receta/{recetaid}")
+    fun getReceta (@Path("recetaid") recetaid : Long) : Observable<mReceta>
 
 }

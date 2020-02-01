@@ -6,10 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.blackspider.recetapp.R
+import com.blackspider.recetapp.model.mRecetaDetalle
 import com.blackspider.recetapp.viewHolder.viewholderMedicamento
 import com.blackspider.recetapp.viewHolder.viewholderPaciente
 
-class adapterMedicamento (val lmedicamentos : ArrayList<*>): RecyclerView.Adapter<RecyclerView.ViewHolder>(), View.OnClickListener {
+class adapterMedicamento (val lmedicamentos : ArrayList<mRecetaDetalle>): RecyclerView.Adapter<RecyclerView.ViewHolder>(), View.OnClickListener {
 
     private  lateinit var  listener : View.OnClickListener
 
@@ -27,7 +28,7 @@ class adapterMedicamento (val lmedicamentos : ArrayList<*>): RecyclerView.Adapte
     private fun getViewHolder(parent: ViewGroup, inflater: LayoutInflater): RecyclerView.ViewHolder {
         val viewHolder: RecyclerView.ViewHolder
         val v1 = inflater.inflate(R.layout.layout_medicamento, parent, false)
-        viewHolder = viewholderPaciente(v1)
+        viewHolder = viewholderMedicamento(v1)
         return viewHolder
     }
 
@@ -37,6 +38,12 @@ class adapterMedicamento (val lmedicamentos : ArrayList<*>): RecyclerView.Adapte
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         holder as viewholderMedicamento
+
+
+
+        holder.tvmedicamento.text = lmedicamentos[position].mpkrecetadetalle.mmedicamento!!.medicamento
+        holder.tvindicaciones.text = lmedicamentos[position].indicaciones
+        holder.tvdosis.text = lmedicamentos[position].dosis
     }
 
     fun setOnClickListener(listener : View.OnClickListener){

@@ -9,13 +9,13 @@ class viewholderMedicamento(itemView : View): RecyclerView.ViewHolder(itemView){
 
     val tvmedicamento : TextView
     val tvindicaciones : TextView
-    val tvdossis : TextView
+    val tvdosis : TextView
 
     init {
 
         tvmedicamento = itemView.findViewById(R.id.tvMedicamento)
         tvindicaciones = itemView.findViewById(R.id.tvIndicaciones)
-        tvdossis = itemView.findViewById(R.id.tvDosis)
+        tvdosis = itemView.findViewById(R.id.tvDosis)
 
     }
 
