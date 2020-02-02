@@ -1,4 +1,4 @@
-# recetapp
+# Recetapp
 
 App para recetas medicas
 
