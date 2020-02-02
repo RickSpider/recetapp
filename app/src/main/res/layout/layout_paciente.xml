@@ -28,7 +28,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="2dp"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -37,10 +37,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
-                android:fontFamily="@font/work_sans_bold"
                 android:text="TextView"
-                android:textColor="@color/colorPrimary"
-                android:textSize="18sp"
+                android:textColor="@color/design_default_color_on_secondary"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 tool:text="Ricardo Gonzalez" />
 
@@ -48,18 +47,18 @@
                 android:id="@+id/tvEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="3dp"
+                android:layout_margin="2dp"
                 android:text="TextView"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvCelular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="3dp"
+                android:layout_margin="2dp"
                 android:fontFamily="@font/work_sans"
                 android:text="TextView"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 tool:text="0961748907" />
 
             <View
