@@ -63,10 +63,12 @@ class RecetaFragment : Fragment() {
 
     private fun handleReceta(mreceta : mReceta){
 
-        tvMedico.text = mreceta.mmedico!!.mpersona.nombre+" "+mreceta.mmedico!!.mpersona.apellido
+        tvMedico.text = mreceta.mmedico!!.mtitulo.titulo+" "+mreceta.mmedico!!.mpersona.nombre+" "+mreceta.mmedico!!.mpersona.apellido
         tvPaciente.text = mreceta.mpaciente!!.mpersona.nombre+" "+mreceta.mpaciente!!.mpersona.apellido
         tvFecha.text = mreceta.fchreceta
         tvDiagnostico.text = mreceta.diagnostico
+
+
 
     }
 

@@ -22,6 +22,7 @@
             android:layout_margin="15dp"
             android:text="Formulario de Registro"
             android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -42,101 +43,99 @@
             android:layout_margin="5dp"
             android:orientation="horizontal">
 
-            <RadioButton
+            <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/radioButton3"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/colorPrimary"
                 android:text="Paciente" />
 
-            <RadioButton
+            <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/radioButton4"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/colorPrimary"
                 android:text="Medico" />
 
         </RadioGroup>
 
-        <EditText
-            android:id="@+id/editText3"
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:ems="10"
-            android:hint="Usuario"
-            android:inputType="textPersonName" />
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/editText4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:ems="10"
-            android:hint="Contraseña"
-            android:inputType="textPassword" />
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:layout_weight="0"
+                app:srcCompat="@drawable/ic_person_black" />
 
-        <EditText
-            android:id="@+id/editText5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:ems="10"
-            android:hint="Email"
-            android:inputType="textEmailAddress" />
-
-        <EditText
-            android:id="@+id/editText6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:ems="10"
-            android:hint="Cel"
-            android:inputType="phone" />
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:hint="Fecha de Nacimiento"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:pointerIcon="wait"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tvFecha"
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:inputType="date"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:hint="Nombre"
+                android:pointerIcon="wait">
 
-                />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tvNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
 
-        </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
 
 
-        <EditText
-            android:id="@+id/editText8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:ems="10"
-            android:hint="Registro Numero"
-            android:inputType="textPersonName" />
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/editText9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:ems="10"
-            android:hint="Espcialidad"
-            android:inputType="textPersonName" />
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:layout_weight="0"
+                android:src="@drawable/ic_calendar_today" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:hint="Fecha de Nacimiento"
+                android:pointerIcon="wait">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tvFecha"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="date"
+
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
 
         <Button
             android:id="@+id/button3"

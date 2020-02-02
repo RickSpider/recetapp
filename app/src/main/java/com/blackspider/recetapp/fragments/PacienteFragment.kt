@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,7 +31,7 @@ class PacienteFragment : Fragment() {
 
     private lateinit var mCompositeDisposable : CompositeDisposable
     //private val pacienteid: Long = 1
-    private val args : PerfilFragmentArgs by navArgs()
+    private val args : PacienteFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,19 +44,27 @@ class PacienteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        iv_paciente.setOnClickListener{
+       /* iv_paciente.setOnClickListener{
 
             val action = PacienteFragmentDirections.actionPacienteFragmentToPerfilFragment(args.pacienteid)
             findNavController().navigate(action)
+
+        }*/
+
+        if (!args.medico){
+
+            fabAddReceta.isVisible = false
 
         }
 
         mCompositeDisposable = CompositeDisposable()
         loadJsonReceta()
-        loadJsonPaciente()
+
+
+        //loadJsonPaciente()
     }
 
-    private fun loadJsonPaciente() {
+  /*  private fun loadJsonPaciente() {
 
         val retrofit = connector().create(requestPaciente::class.java)
         mCompositeDisposable.add(
@@ -66,16 +75,16 @@ class PacienteFragment : Fragment() {
         )
 
 
-    }
+    }*/
 
-    private fun handlePaciente(mpaciente : mPaciente){
+ /*  private fun handlePaciente(mpaciente : mPaciente){
 
         tvPaciente.text = "${mpaciente.mpersona.nombre} ${mpaciente.mpersona.apellido}"
         tvEdad.text = mpaciente.mpersona.celular
         tvCI.text = mpaciente.mpersona.ci
 
 
-    }
+    }*/
 
     private fun loadJsonReceta() {
         val retrofit = connector().create(requestReceta::class.java)
@@ -116,8 +125,8 @@ class PacienteFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
 
-        mCompositeDisposable!!.clear()
-        mCompositeDisposable!!.dispose()
+        mCompositeDisposable.clear()
+        mCompositeDisposable.dispose()
     }
 }
 

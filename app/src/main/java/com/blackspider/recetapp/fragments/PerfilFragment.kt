@@ -7,12 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 
 import com.blackspider.recetapp.R
+import com.blackspider.recetapp.model.mMedico
 import com.blackspider.recetapp.model.mPaciente
 import com.blackspider.recetapp.recursos.connector
+import com.blackspider.recetapp.request.requestMedico
 import com.blackspider.recetapp.request.requestPaciente
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -43,8 +46,7 @@ class PerfilFragment : Fragment() {
 
         ibReceta.setOnClickListener{
 
-
-            val action = PerfilFragmentDirections.actionPerfilFragmentToPacienteFragment2(args.pacienteid)
+            val action = PerfilFragmentDirections.actionPerfilFragmentToPacienteFragment2(args.id, true)
             findNavController().navigate(action)
 
         }
@@ -53,14 +55,82 @@ class PerfilFragment : Fragment() {
 
         mCompositeDisposable = CompositeDisposable()
 
-        loadJsonPaciente()
+        if (args.medico){
+
+            loadJsonMedico()
+
+        }else{
+
+            loadJsonPaciente()
+
+        }
+
+
+
+    }
+
+    fun loadJsonMedico () {
+
+        val retrofit = connector().create(requestMedico::class.java)
+        mCompositeDisposable.add(
+            retrofit.getOneMedico(args.id)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(this::handleMedico, this::handleError)
+        )
+
+    }
+
+    private fun handleMedico(mmedico : mMedico){
+
+        tvFullNombre.text = "${mmedico.mtitulo.titulo} ${mmedico.mpersona.nombre} ${mmedico.mpersona.apellido}"
+        tvCI.text = mmedico.mpersona.ci
+        tvEmail.text = mmedico.mpersona.email
+        tvTelefono.text = mmedico.mpersona.telefono
+        tvCelular.text = mmedico.mpersona.celular
+        tvDireccion.text = mmedico.mpersona.direccion
+
+
+
+        tvTitulo.isVisible = true
+        tvCertificado.isVisible = true
+        tvNroregistro.isVisible = true
+
+        if (mmedico.certificado!!){
+
+            tvCertificado.text = "Certificado"
+
+        }else{
+
+            tvCertificado.text = "No Certificado"
+
+        }
+
+        tvNroregistro.text = mmedico.nroregistro
+        tvTitulo.text = mmedico.mtitulo.titulo
+
+
+        if (mmedico.mpersona.genero.equals("m")){
+
+            tvSexo.text = "Masculino"
+
+        }else{
+            tvSexo.text = "Femenino"
+
+        }
+
+
+        tvPeso.isVisible = false
+        tvGrupoS.isVisible = false
+        ibReceta.isVisible = false
+        ibWhtasapp.isVisible = false
 
     }
 
     private fun loadJsonPaciente() {
         val retrofit = connector().create(requestPaciente::class.java)
         mCompositeDisposable.add(
-            retrofit.getPaciente(args.pacienteid)
+            retrofit.getPaciente(args.id)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(this::handlePaciente, this::handleError)

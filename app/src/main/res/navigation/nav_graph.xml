@@ -34,6 +34,10 @@
         <action
             android:id="@+id/action_pacienteFragment_to_recetaFragment"
             app:destination="@id/recetaFragment" />
+        <argument
+            android:name="medico"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
     <fragment
         android:id="@+id/registroFragment"
@@ -48,8 +52,12 @@
         <action
             android:id="@+id/action_perfilFragment_to_pacienteFragment2"
             app:destination="@id/pacienteFragment" />
-        <argument android:name="pacienteid"
+        <argument android:name="id"
             app:argType="long" />
+        <argument
+            android:name="medico"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
     <fragment
         android:id="@+id/medicoFragment"

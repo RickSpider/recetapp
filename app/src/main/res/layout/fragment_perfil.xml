@@ -63,7 +63,7 @@
                 android:src="@drawable/ic_notas" />
 
             <ImageButton
-                android:id="@+id/imageButton2"
+                android:id="@+id/ibWhtasapp"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="10dp"
@@ -92,6 +92,19 @@
                     android:fontFamily="@font/work_sans_bold"
                     android:text="DATOS PERSONALES"
                     android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tvSexo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:text="TextView"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/tvEmail"
@@ -187,19 +200,6 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/tvSexo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginEnd="2dp"
-                    android:layout_marginRight="2dp"
-                    android:layout_marginBottom="2dp"
-                    android:text="TextView"
-                    android:textSize="14sp" />
-
-                <TextView
                     android:id="@+id/tvPeso"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -224,6 +224,45 @@
                     android:layout_marginBottom="2dp"
                     android:text="TextView"
                     android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvTitulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:text="TextView"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvNroregistro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:text="TextView"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvCertificado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:text="TextView"
+                    android:visibility="gone" />
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>

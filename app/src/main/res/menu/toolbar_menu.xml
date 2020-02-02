@@ -18,8 +18,9 @@
 
     <item
         android:id="@+id/action_perfil"
-        android:icon="@drawable/ic_person_"
+        android:icon="@drawable/ic_person"
         android:title="Perfil"
+
         app:showAsAction="collapseActionView|always"
         />
 

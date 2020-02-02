@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.circularreveal.cardview.CircularRevealCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tool="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     app:cardBackgroundColor="@android:color/white"
-    app:cardElevation="8dp">
+    app:cardElevation="0dp"
+    android:orientation="horizontal"
+    >
 
 
     <LinearLayout
@@ -16,8 +18,8 @@
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_margin="5dp"
             android:layout_weight="0"
@@ -60,8 +62,14 @@
                 android:textSize="14sp"
                 tool:text="0961748907" />
 
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
+
         </LinearLayout>
 
     </LinearLayout>
 
-</com.google.android.material.card.MaterialCardView>
+</com.google.android.material.circularreveal.cardview.CircularRevealCardView>

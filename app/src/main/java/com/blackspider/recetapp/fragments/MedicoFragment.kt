@@ -163,6 +163,16 @@ class MedicoFragment : Fragment() {
 
 
             }
+
+            R.id.action_perfil -> {
+
+
+                val action = MedicoFragmentDirections.actionMedicoFragmentToPerfilFragment(medicoid, true)
+                findNavController().navigate(action)
+
+
+            }
+
         }
         return super.onOptionsItemSelected(item)
     }
