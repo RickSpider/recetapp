@@ -2,15 +2,17 @@ package com.blackspider.recetapp.fragments
 
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
+import androidx.core.view.MenuItemCompat
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.transition.TransitionManager
 
 import com.blackspider.recetapp.R
 import com.blackspider.recetapp.adapter.adapterReceta
@@ -23,6 +25,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_paciente.*
+import kotlinx.android.synthetic.main.toolbar.view.*
 
 /**
  * A simple [Fragment] subclass.
@@ -38,7 +41,13 @@ class PacienteFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_paciente, container, false)
+        val view = inflater.inflate(R.layout.fragment_paciente, container, false)
+
+        (activity as AppCompatActivity).setSupportActionBar(view.app_bar)
+
+        setHasOptionsMenu(true)
+
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -51,10 +60,12 @@ class PacienteFragment : Fragment() {
 
         }*/
 
+
+
         if (!args.medico){
 
+           bottomappbar.isVisible = false
             fabAddReceta.isVisible = false
-
         }
 
         mCompositeDisposable = CompositeDisposable()
@@ -128,5 +139,66 @@ class PacienteFragment : Fragment() {
         mCompositeDisposable.clear()
         mCompositeDisposable.dispose()
     }
+
+    // menu toolbar
+    override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, menuInflater)
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+
+        val actionPerfil = menu.findItem(R.id.action_perfil)
+
+        if (args.medico){
+
+            actionPerfil.isVisible = false
+
+        }
+
+       /* val menuItem = menu.findItem(R.id.action_search)
+        val searchView = MenuItemCompat.getActionView(menuItem) as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+
+                if (adapter != null ){
+
+                    adapter.filter.filter(newText)
+
+                }
+                return true
+            }
+
+
+        })*/
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_search -> {
+                TransitionManager.beginDelayedTransition(
+                    activity!!.findViewById<View>(
+                        R.id.app_bar
+                    ) as ViewGroup
+                )
+                MenuItemCompat.getActionProvider(item)
+                return true
+
+
+            }
+
+            R.id.action_perfil -> {
+
+                val action = PacienteFragmentDirections.actionPacienteFragmentToPerfilFragment(args.pacienteid)
+                findNavController().navigate(action)
+
+
+            }
+
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
 }
 

@@ -88,7 +88,8 @@
                 android:layout_margin="5dp"
                 android:gravity="center|center_horizontal|center_vertical"
                 android:text="@string/paciente"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:buttonTint="@color/colorPrimary"/>
 
             <RadioButton
                 android:id="@+id/rbMedico"
@@ -98,7 +99,8 @@
                 android:layout_margin="5dp"
                 android:gravity="center|center_horizontal|center_vertical"
                 android:text="@string/medico"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:buttonTint="@color/colorPrimary"/>
 
         </RadioGroup>
 

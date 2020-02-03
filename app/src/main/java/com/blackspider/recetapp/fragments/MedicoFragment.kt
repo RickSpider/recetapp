@@ -24,6 +24,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_medico.*
 import kotlinx.android.synthetic.main.fragment_medico.view.*
+import kotlinx.android.synthetic.main.toolbar.view.*
 
 
 /**
@@ -57,6 +58,8 @@ class MedicoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
 
         mCompositeDisposable = CompositeDisposable()
       //  loadJsonMedico()
