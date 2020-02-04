@@ -14,16 +14,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.TransitionManager
 import com.blackspider.recetapp.R
 import com.blackspider.recetapp.adapter.adapterPaciente
-import com.blackspider.recetapp.model.mMedico
 import com.blackspider.recetapp.model.mMedicoPaciente
 import com.blackspider.recetapp.recursos.connector
-import com.blackspider.recetapp.request.requestMedico
 import com.blackspider.recetapp.request.requestMedicoPaciente
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_medico.*
-import kotlinx.android.synthetic.main.fragment_medico.view.*
 import kotlinx.android.synthetic.main.toolbar.view.*
 
 
@@ -92,8 +89,8 @@ class MedicoFragment : Fragment() {
 
         adapter.setOnClickListener(View.OnClickListener {
 
-            val pacienteid: Long = lmedicopacientes[rvPacientes.getChildAdapterPosition(it)].mpkmedicopaciente.mpaciente!!.pacienteid
-            val action = MedicoFragmentDirections.actionMedicoFragmentToPerfilFragment(pacienteid)
+            val pacienteid: Long = adapter.lpacientes[rvPacientes.getChildAdapterPosition(it)].mpkmedicopaciente.mpaciente!!.pacienteid
+            val action = MedicoFragmentDirections.actionMedicoFragmentToPerfilFragment(pacienteid,false,medicoid)
             findNavController().navigate(action)
 
         })
@@ -127,6 +124,10 @@ class MedicoFragment : Fragment() {
         mCompositeDisposable!!.dispose()
     }
 
+
+
+    //bloque para la barra de busqueda
+
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, menuInflater)
         menuInflater.inflate(R.menu.toolbar_menu, menu)
@@ -134,7 +135,7 @@ class MedicoFragment : Fragment() {
         val searchView = MenuItemCompat.getActionView(menuItem) as SearchView
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
-               return true
+                return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
@@ -150,8 +151,6 @@ class MedicoFragment : Fragment() {
 
         })
     }
-
-    //bloque para la barra de busqueda
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {

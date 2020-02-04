@@ -46,7 +46,7 @@ class PerfilFragment : Fragment() {
 
         ibReceta.setOnClickListener{
 
-            val action = PerfilFragmentDirections.actionPerfilFragmentToPacienteFragment2(args.id, true)
+            val action = PerfilFragmentDirections.actionPerfilFragmentToPacienteFragment2(args.id, true, args.medicoid)
             findNavController().navigate(action)
 
         }

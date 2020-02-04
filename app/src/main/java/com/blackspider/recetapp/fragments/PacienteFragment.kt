@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuItemCompat
+import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -35,6 +36,7 @@ class PacienteFragment : Fragment() {
     private lateinit var mCompositeDisposable : CompositeDisposable
     //private val pacienteid: Long = 1
     private val args : PacienteFragmentArgs by navArgs()
+    private lateinit var adapter : adapterReceta
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -64,12 +66,23 @@ class PacienteFragment : Fragment() {
 
         if (!args.medico){
 
-           bottomappbar.isVisible = false
-            fabAddReceta.isVisible = false
+            bottomappbar.visibility = View.GONE
+            fabAddReceta.visibility = View.GONE
         }
 
         mCompositeDisposable = CompositeDisposable()
-        loadJsonReceta()
+
+        if (args.medico){
+
+            loadJsonRecetaPorMedico()
+
+        }else{
+
+            loadJsonReceta()
+
+        }
+
+
 
 
         //loadJsonPaciente()
@@ -97,6 +110,18 @@ class PacienteFragment : Fragment() {
 
     }*/
 
+    fun loadJsonRecetaPorMedico(){
+
+        val retrofit = connector().create(requestReceta::class.java)
+        mCompositeDisposable.add(
+            retrofit.getRecetaPaciente(args.pacienteid, args.medicoid)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(this::handleResponseReceta, this::handleError)
+        )
+
+    }
+
     private fun loadJsonReceta() {
         val retrofit = connector().create(requestReceta::class.java)
         mCompositeDisposable.add(
@@ -109,11 +134,11 @@ class PacienteFragment : Fragment() {
 
     private fun handleResponseReceta (lreceta : ArrayList<mReceta>){
 
-        var adapter = adapterReceta(lreceta)
+        adapter = adapterReceta(lreceta)
 
         adapter.setOnClickListener(View.OnClickListener{
 
-            val recetaid: Long = lreceta[rvRecetas.getChildAdapterPosition(it)].recetaid
+            val recetaid: Long = adapter.lrecetas[rvRecetas.getChildAdapterPosition(it)].recetaid
             val action = PacienteFragmentDirections.actionPacienteFragmentToRecetaFragment(recetaid)
             findNavController().navigate(action)
 
@@ -153,7 +178,7 @@ class PacienteFragment : Fragment() {
 
         }
 
-       /* val menuItem = menu.findItem(R.id.action_search)
+        val menuItem = menu.findItem(R.id.action_search)
         val searchView = MenuItemCompat.getActionView(menuItem) as SearchView
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -171,7 +196,7 @@ class PacienteFragment : Fragment() {
             }
 
 
-        })*/
+        })
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -190,7 +215,7 @@ class PacienteFragment : Fragment() {
 
             R.id.action_perfil -> {
 
-                val action = PacienteFragmentDirections.actionPacienteFragmentToPerfilFragment(args.pacienteid)
+                val action = PacienteFragmentDirections.actionPacienteFragmentToPerfilFragment(args.pacienteid, false, 0)
                 findNavController().navigate(action)
 
 
@@ -199,6 +224,8 @@ class PacienteFragment : Fragment() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+
 
 }
 

@@ -3,13 +3,17 @@ package com.blackspider.recetapp.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.blackspider.recetapp.R
+import com.blackspider.recetapp.model.mMedicoPaciente
 import com.blackspider.recetapp.model.mReceta
 import com.blackspider.recetapp.viewHolder.viewholderReceta
 
-class adapterReceta (val lrecetas : ArrayList<mReceta>):RecyclerView.Adapter<RecyclerView.ViewHolder>(), View.OnClickListener{
+class adapterReceta (var lrecetas : ArrayList<mReceta>):RecyclerView.Adapter<RecyclerView.ViewHolder>(), View.OnClickListener, Filterable {
 
+    private var auxarray = lrecetas
     private var listener: View.OnClickListener? =  null
 
     fun setOnClickListener(listener : View.OnClickListener){
@@ -54,6 +58,51 @@ class adapterReceta (val lrecetas : ArrayList<mReceta>):RecyclerView.Adapter<Rec
 
     override fun onClick(p0: View?) {
         if (listener != null)   listener!!.onClick(p0)
+    }
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+
+                val charString : String = constraint.toString()
+
+                if (charString.isEmpty()){
+
+                    lrecetas = auxarray
+
+                }else{
+
+                    var filterList : ArrayList<mReceta> = ArrayList()
+
+                    for(mr in auxarray){
+
+                        val nc = mr.mmedico!!.mpersona.nombre!!+" "+mr.mmedico!!.mpersona.apellido!!
+
+                        if (nc.toLowerCase().contains(charString)){
+
+                            filterList.add(mr)
+
+                        }
+
+                    }
+
+                    lrecetas = filterList
+
+                }
+
+                val filterResult = FilterResults()
+                filterResult.values = lrecetas
+
+                return filterResult
+
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                lrecetas = results!!.values as ArrayList<mReceta>
+                notifyDataSetChanged()
+            }
+
+        }
     }
 
 

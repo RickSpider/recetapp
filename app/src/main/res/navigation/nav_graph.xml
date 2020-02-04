@@ -38,6 +38,10 @@
             android:name="medico"
             app:argType="boolean"
             android:defaultValue="false" />
+        <argument
+            android:name="medicoid"
+            app:argType="long"
+            android:defaultValue="0L" />
     </fragment>
     <fragment
         android:id="@+id/registroFragment"
@@ -58,6 +62,10 @@
             android:name="medico"
             app:argType="boolean"
             android:defaultValue="false" />
+        <argument
+            android:name="medicoid"
+            app:argType="long"
+            android:defaultValue="0L" />
     </fragment>
     <fragment
         android:id="@+id/medicoFragment"
