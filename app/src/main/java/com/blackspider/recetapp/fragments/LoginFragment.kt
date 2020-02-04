@@ -16,17 +16,15 @@ import kotlinx.android.synthetic.main.fragment_login.*
 /**
  * A simple [Fragment] subclass.
  */
-class LoginFragment : Fragment() {
+class LoginFragment : Fragment(R.layout.fragment_login) {
 
-
-
-    override fun onCreateView(
+   /* override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_login, container, false)
-    }
+    }*/
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -57,8 +55,6 @@ class LoginFragment : Fragment() {
         }
 
         btn_regitrar.setOnClickListener{
-
-
 
             val action = LoginFragmentDirections.actionLoginFragmentToRegistroFragment()
             findNavController().navigate(action)

@@ -50,6 +50,7 @@
         android:src="@drawable/ic_plus"
         app:backgroundTint="@color/colorPrimary"
         app:layout_anchor="@id/bottomappbar"
+        app:fabSize="normal"
         android:layout_marginTop="30dp"
         app:tint="#FFFFFF"/>
 
