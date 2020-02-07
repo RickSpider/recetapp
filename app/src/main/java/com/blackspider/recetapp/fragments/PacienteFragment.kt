@@ -148,6 +148,7 @@ class PacienteFragment : Fragment() {
         rvRecetas.adapter = adapter
 
 
+
     }
 
     private fun handleError(error: Throwable) {

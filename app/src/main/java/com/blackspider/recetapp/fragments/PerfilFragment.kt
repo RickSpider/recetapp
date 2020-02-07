@@ -125,6 +125,8 @@ class PerfilFragment : Fragment() {
         ibReceta.isVisible = false
         ibWhtasapp.isVisible = false
 
+
+
     }
 
     private fun loadJsonPaciente() {
@@ -139,16 +141,16 @@ class PerfilFragment : Fragment() {
 
     private fun handlePaciente(mpaciente : mPaciente){
 
-        tvFullNombre.text = "${mpaciente.mpersona.nombre} ${mpaciente.mpersona.apellido}"
-        tvCI.text = mpaciente.mpersona.ci
-        tvEmail.text = mpaciente.mpersona.email
-        tvTelefono.text = mpaciente.mpersona.telefono
-        tvCelular.text = mpaciente.mpersona.celular
+        tvFullNombre.text = "${mpaciente.mpersona!!.nombre} ${mpaciente.mpersona!!.apellido}"
+        tvCI.text = mpaciente.mpersona!!.ci
+        tvEmail.text = mpaciente.mpersona!!.email
+        tvTelefono.text = mpaciente.mpersona!!.telefono
+        tvCelular.text = mpaciente.mpersona!!.celular
         tvGrupoS.text = mpaciente.gruposanguineo
         tvPeso.text = mpaciente.pesocorporal
-        tvDireccion.text = mpaciente.mpersona.direccion
+        tvDireccion.text = mpaciente.mpersona!!.direccion
 
-        if (mpaciente.mpersona.genero.equals("m")){
+        if (mpaciente.mpersona!!.genero.equals("m")){
 
             tvSexo.text = "Masculino"
 
@@ -156,6 +158,7 @@ class PerfilFragment : Fragment() {
             tvSexo.text = "Femenino"
 
         }
+
 
 
 

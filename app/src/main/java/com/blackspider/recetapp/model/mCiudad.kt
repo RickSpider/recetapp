@@ -1,10 +1,10 @@
 package com.blackspider.recetapp.model
 
-data class mTitulo (var tituloid : Long, var titulo : String){
+data class mCiudad (val ciudadid : Long, val ciudad : String){
 
     override fun toString () : String {
 
-        return this.titulo
+        return this.ciudad
 
     }
 

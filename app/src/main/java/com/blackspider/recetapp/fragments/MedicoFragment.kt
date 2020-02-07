@@ -89,7 +89,7 @@ class MedicoFragment : Fragment() {
 
         adapter.setOnClickListener(View.OnClickListener {
 
-            val pacienteid: Long = adapter.lpacientes[rvPacientes.getChildAdapterPosition(it)].mpkmedicopaciente.mpaciente!!.pacienteid
+            val pacienteid: Long = adapter.lpacientes[rvPacientes.getChildAdapterPosition(it)].mpkmedicopaciente.mpaciente!!.pacienteid!!
             val action = MedicoFragmentDirections.actionMedicoFragmentToPerfilFragment(pacienteid,false,medicoid)
             findNavController().navigate(action)
 
@@ -97,6 +97,8 @@ class MedicoFragment : Fragment() {
 
         rvPacientes.layoutManager = LinearLayoutManager(this.context)
         rvPacientes.adapter = adapter
+
+
 
 
     }

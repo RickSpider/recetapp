@@ -26,6 +26,23 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/work_sans_bold"
+                    android:text="Medico:" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:orientation="horizontal"
@@ -33,24 +50,14 @@
 
                 <ImageView
                     android:id="@+id/imageView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:src="@mipmap/ic_launcher_round" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textView8"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="2dp"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/work_sans_bold"
-                        android:text="Medico:"
-                        android:textColor="@color/colorPrimary" />
 
                     <TextView
                         android:id="@+id/tvMedico"
@@ -69,6 +76,23 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/work_sans_bold"
+                    android:text="Paciente:" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:orientation="horizontal"
@@ -76,8 +100,8 @@
 
                 <ImageView
                     android:id="@+id/imageView6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_weight="0"
                     android:src="@mipmap/ic_launcher_round" />
 
@@ -86,16 +110,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="0"
                     android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textView12"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="2dp"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/work_sans_bold"
-                        android:text="Paciente:"
-                        android:textColor="@color/colorPrimary" />
 
                     <TextView
                         android:id="@+id/tvPaciente"
@@ -113,11 +127,25 @@
             </LinearLayout>
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/work_sans_bold"
+                android:text="Diagnostico:" />
+        </LinearLayout>
+
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            app:cardElevation="8dp">
+            android:elevation="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -136,25 +164,13 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:orientation="vertical"
                     android:paddingStart="2dp"
                     android:paddingTop="2dp"
                     android:paddingEnd="2dp"
                     android:paddingBottom="8dp">
-
-                    <TextView
-                        android:id="@+id/textView10"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginBottom="4dp"
-                        android:fontFamily="@font/work_sans_bold"
-                        android:text="Diagnostico"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/tvFecha"
@@ -167,7 +183,7 @@
                         android:text="TextView"
                         android:textAlignment="textStart"
                         android:textColor="@android:color/black"
-                        android:textSize="10sp"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -187,6 +203,21 @@
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/work_sans_bold"
+                android:text="Medicamentos:" />
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvRecetaDetalle"
