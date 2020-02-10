@@ -55,6 +55,13 @@ class PacienteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        fabAddReceta.setOnClickListener {
+
+            val action = PacienteFragmentDirections.actionPacienteFragmentToCargarRecetaFragment()
+            findNavController().navigate(action)
+
+        }
+
        /* iv_paciente.setOnClickListener{
 
             val action = PacienteFragmentDirections.actionPacienteFragmentToPerfilFragment(args.pacienteid)

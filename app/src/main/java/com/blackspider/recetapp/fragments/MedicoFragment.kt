@@ -57,7 +57,6 @@ class MedicoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-
         mCompositeDisposable = CompositeDisposable()
       //  loadJsonMedico()
         loadJsonPacientes()
