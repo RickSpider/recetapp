@@ -1,31 +1,37 @@
 package com.blackspider.recetapp.adapter
 
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.blackspider.recetapp.R
-import com.blackspider.recetapp.model.mRecetaDetalle
+import com.blackspider.recetapp.model.mMedicamento
 import com.blackspider.recetapp.viewHolder.viewholderMedicamento
-import com.blackspider.recetapp.viewHolder.viewholderPaciente
 
-class adapterMedicamento (val lmedicamentos : ArrayList<mRecetaDetalle>): RecyclerView.Adapter<RecyclerView.ViewHolder>(), View.OnClickListener {
 
-    private  lateinit var  listener : View.OnClickListener
+class adapterMedicamento (var lmedicamentos : ArrayList<mMedicamento>): RecyclerView.Adapter<RecyclerView.ViewHolder>(),
+    Filterable {
+
+    private lateinit var listener: View.OnClickListener
+    private var lmedicamentos1  = lmedicamentos
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val viewHolder : RecyclerView.ViewHolder
+        val viewHolder: RecyclerView.ViewHolder
 
         val inflater = LayoutInflater.from(parent.context)
 
         viewHolder = getViewHolder(parent, inflater)
-        viewHolder.itemView.setOnClickListener(this)
+      //  viewHolder.itemView.setOnClickListener(this)
 
         return viewHolder
     }
 
-    private fun getViewHolder(parent: ViewGroup, inflater: LayoutInflater): RecyclerView.ViewHolder {
+    private fun getViewHolder(
+        parent: ViewGroup,
+        inflater: LayoutInflater
+    ): RecyclerView.ViewHolder {
         val viewHolder: RecyclerView.ViewHolder
         val v1 = inflater.inflate(R.layout.layout_medicamento, parent, false)
         viewHolder = viewholderMedicamento(v1)
@@ -39,22 +45,66 @@ class adapterMedicamento (val lmedicamentos : ArrayList<mRecetaDetalle>): Recycl
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         holder as viewholderMedicamento
 
+        holder.tvmedicamento.text = lmedicamentos[position].medicamento
+        holder.tvobservacion.text = lmedicamentos[position].observacion
 
-
-        holder.tvmedicamento.text = lmedicamentos[position].mpkrecetadetalle.mmedicamento!!.medicamento
-        holder.tvindicaciones.text = lmedicamentos[position].indicaciones
-        holder.tvdosis.text = lmedicamentos[position].dosis
     }
 
-    fun setOnClickListener(listener : View.OnClickListener){
+    fun setOnClickListener(listener: View.OnClickListener) {
 
         this.listener = listener
 
     }
 
-    override fun onClick(v: View?) {
-        if (listener != null)   listener!!.onClick(v)
+   /* override fun onClick(v: View?) {
+        if (listener != null) listener!!.onClick(v)
+    }*/
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+
+                val charString : String = constraint.toString()
+
+                if (charString.isEmpty()){
+
+                    lmedicamentos = lmedicamentos1
+
+                }else{
+
+                    var filterList : ArrayList<mMedicamento> = ArrayList()
+
+                    for(mm in lmedicamentos1){
+
+                        val nc = mm.medicamento
+
+                        if (nc.toLowerCase().contains(charString)){
+
+                            filterList.add(mm)
+
+                        }
+
+                    }
+
+                    lmedicamentos = filterList
+
+                }
+
+                val filterResult = FilterResults()
+                filterResult.values = lmedicamentos
+
+                return filterResult
+
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                lmedicamentos = results!!.values as ArrayList<mMedicamento>
+                notifyDataSetChanged()
+            }
+
+        }
     }
+
 
 
 }

@@ -41,6 +41,7 @@
                 android:hint="Indicaciones">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietIndicaciones"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -54,6 +55,7 @@
                 android:hint="Dosis">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietDosis"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>

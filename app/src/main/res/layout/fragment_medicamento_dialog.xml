@@ -3,12 +3,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.MedicamentoDialogFragment">
+    android:orientation="vertical"
+    tools:context=".fragments.MedicamentoDialogFragment"
+    android:background="@color/colorPrimaryTransparent"
+    android:layout_margin="1dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_margin="3dp"
+        android:background="@drawable/rounded_corner_custom"
+        android:orientation="vertical"
+        >
+
+
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchMedicamento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:queryHint="Buscar Medicamento"
+            />
+
+        <View
+            android:id="@+id/divider4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMedicamentos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp" />
+
+    </LinearLayout>
+
+
 
 </FrameLayout>

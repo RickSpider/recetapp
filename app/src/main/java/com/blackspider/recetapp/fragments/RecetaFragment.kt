@@ -11,12 +11,10 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.blackspider.recetapp.R
-import com.blackspider.recetapp.adapter.adapterMedicamento
-import com.blackspider.recetapp.adapter.adapterReceta
+import com.blackspider.recetapp.adapter.adapterMedicamentoReceta
 import com.blackspider.recetapp.model.mReceta
 import com.blackspider.recetapp.model.mRecetaDetalle
 import com.blackspider.recetapp.recursos.connector
-import com.blackspider.recetapp.request.requestPaciente
 import com.blackspider.recetapp.request.requestReceta
 import com.google.android.material.snackbar.Snackbar
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -89,7 +87,7 @@ class RecetaFragment : Fragment() {
 
     private fun handleRecetaDetalle(lrecetadetalle : ArrayList<mRecetaDetalle>){
 
-        var adapter = adapterMedicamento(lrecetadetalle)
+        var adapter = adapterMedicamentoReceta(lrecetadetalle)
         adapter.setOnClickListener(View.OnClickListener{
 
             val observacion : String = lrecetadetalle[rvRecetaDetalle.getChildAdapterPosition(it)].mpkrecetadetalle.mmedicamento!!.observacion
