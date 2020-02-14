@@ -1,17 +1,19 @@
 package com.blackspider.recetapp.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.blackspider.recetapp.R
 import com.blackspider.recetapp.model.mMedicamento
 import com.blackspider.recetapp.viewHolder.viewholderMedicamento
 
 
-class adapterMedicamento (var lmedicamentos : ArrayList<mMedicamento>): RecyclerView.Adapter<RecyclerView.ViewHolder>(),
+class adapterMedicamento (var lmedicamentos : ArrayList<mMedicamento>, val context : Context): RecyclerView.Adapter<RecyclerView.ViewHolder>(),
     Filterable {
 
     private lateinit var listener: View.OnClickListener
@@ -23,7 +25,7 @@ class adapterMedicamento (var lmedicamentos : ArrayList<mMedicamento>): Recycler
         val inflater = LayoutInflater.from(parent.context)
 
         viewHolder = getViewHolder(parent, inflater)
-      //  viewHolder.itemView.setOnClickListener(this)
+
 
         return viewHolder
     }
@@ -48,15 +50,22 @@ class adapterMedicamento (var lmedicamentos : ArrayList<mMedicamento>): Recycler
         holder.tvmedicamento.text = lmedicamentos[position].medicamento
         holder.tvobservacion.text = lmedicamentos[position].observacion
 
+        holder.mchbmedicamento.isChecked = lmedicamentos[position].isSelected
+
+        holder.mchbmedicamento.setOnCheckedChangeListener { buttonView, isChecked ->
+
+            lmedicamentos[position].isSelected = isChecked
+
+            Toast.makeText(context, "$isChecked", Toast.LENGTH_LONG).show()
+
+
+        }
+
+
+
     }
 
-    fun setOnClickListener(listener: View.OnClickListener) {
-
-        this.listener = listener
-
-    }
-
-   /* override fun onClick(v: View?) {
+    /* override fun onClick(v: View?) {
         if (listener != null) listener!!.onClick(v)
     }*/
 
@@ -104,6 +113,8 @@ class adapterMedicamento (var lmedicamentos : ArrayList<mMedicamento>): Recycler
 
         }
     }
+
+
 
 
 

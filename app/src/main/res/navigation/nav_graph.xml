@@ -92,5 +92,11 @@
         android:id="@+id/cargarRecetaFragment"
         android:name="com.blackspider.recetapp.fragments.CargarRecetaFragment"
         android:label="fragment_cargar_receta"
-        tools:layout="@layout/fragment_cargar_receta" />
+        tools:layout="@layout/fragment_cargar_receta" >
+        <argument android:name="pacientid"
+            app:argType="long" />
+        <argument
+            android:name="medicoid"
+            app:argType="long" />
+    </fragment>
 </navigation>

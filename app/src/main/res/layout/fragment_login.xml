@@ -8,8 +8,8 @@
     tools:context=".fragments.LoginFragment">
 
     <LinearLayout
-        android:layout_width="399dp"
-        android:layout_height="714dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_margin="10dp"
         android:orientation="vertical"
         android:padding="24dp"
@@ -27,7 +27,6 @@
             android:layout_marginTop="48dp"
             android:layout_marginBottom="16dp"
             android:src="@drawable/logo" />
-
 
 
         <TextView
@@ -63,8 +62,8 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:id="@+id/password_text_input"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
@@ -88,10 +87,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|center_horizontal|center_vertical"
                 android:layout_margin="5dp"
+                android:buttonTint="@color/colorPrimary"
                 android:gravity="center|center_horizontal|center_vertical"
                 android:text="@string/paciente"
-                android:textSize="14sp"
-                android:buttonTint="@color/colorPrimary"/>
+                android:textSize="14sp" />
 
             <RadioButton
                 android:id="@+id/rbMedico"
@@ -99,10 +98,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|center_horizontal|center_vertical"
                 android:layout_margin="5dp"
+                android:buttonTint="@color/colorPrimary"
                 android:gravity="center|center_horizontal|center_vertical"
                 android:text="@string/medico"
-                android:textSize="14sp"
-                android:buttonTint="@color/colorPrimary"/>
+                android:textSize="14sp" />
 
         </RadioGroup>
 

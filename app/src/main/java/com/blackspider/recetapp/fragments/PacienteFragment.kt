@@ -57,7 +57,7 @@ class PacienteFragment : Fragment() {
 
         fabAddReceta.setOnClickListener {
 
-            val action = PacienteFragmentDirections.actionPacienteFragmentToCargarRecetaFragment()
+            val action = PacienteFragmentDirections.actionPacienteFragmentToCargarRecetaFragment(args.pacienteid, args.medicoid)
             findNavController().navigate(action)
 
         }
