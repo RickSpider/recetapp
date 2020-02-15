@@ -56,7 +56,7 @@ class adapterMedicamento (var lmedicamentos : ArrayList<mMedicamento>, val conte
 
             lmedicamentos[position].isSelected = isChecked
 
-            Toast.makeText(context, "$isChecked", Toast.LENGTH_LONG).show()
+            //Toast.makeText(context, "$isChecked", Toast.LENGTH_LONG).show()
 
 
         }

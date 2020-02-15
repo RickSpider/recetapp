@@ -1,5 +1,6 @@
 package com.blackspider.recetapp.adapter
 
+import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,8 +41,8 @@ class adapterMedicamentoRecetaDato (val lmedicamentos : ArrayList<mMedicamento>)
 
 
         holder.tvmedicamento.text = lmedicamentos[position].medicamento
-      /*  holder.tvindicaciones.text = lmedicamentos[position].indicaciones
-        holder.tvdosis.text = lmedicamentos[position].dosis*/
+        holder.tietindicaciones.text =  SpannableStringBuilder("")
+        holder.tietdosis.text =SpannableStringBuilder("")
     }
 
     fun add(mmedicamento: mMedicamento){

@@ -6,4 +6,5 @@
     <color name="toolbarIconColor">#FFFFFF</color>
     <color name="loginPageBackgroundColor">#FFFFFF</color>
     <color name="colorPrimaryTransparent">#463B01D1</color>
+    <color name="DeleteColor">#FF0000</color>
 </resources>

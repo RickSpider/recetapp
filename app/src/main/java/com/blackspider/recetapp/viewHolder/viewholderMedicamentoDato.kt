@@ -9,14 +9,14 @@ import com.google.android.material.textfield.TextInputEditText
 class viewholderMedicamentoDato(itemView : View): RecyclerView.ViewHolder(itemView){
 
     val tvmedicamento : TextView
-   // val tvindicaciones : TextInputEditText
-    //val tvdosis : TextInputEditText
+    val tietindicaciones : TextInputEditText
+    val tietdosis : TextInputEditText
 
     init {
 
         tvmedicamento = itemView.findViewById(R.id.tvMedicamento)
-        //tvindicaciones = itemView.findViewById(R.id.tietDiagnostico)
-        //tvdosis = itemView.findViewById(R.id.tietDosis)
+        tietindicaciones = itemView.findViewById(R.id.tietIndicaciones)
+        tietdosis = itemView.findViewById(R.id.tietDosis)
 
     }
 

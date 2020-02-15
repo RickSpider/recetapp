@@ -18,7 +18,8 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+           >
 
             <include
                 layout="@layout/toolbar"
@@ -46,6 +47,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/work_sans_bold"
                         android:text="Paciente:" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -187,14 +189,95 @@
     </com.google.android.material.bottomappbar.BottomAppBar>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-    android:id="@+id/fabaddMedicamento"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:src="@drawable/ic_plus"
-    app:backgroundTint="@color/colorPrimary"
-    app:layout_anchor="@id/bottomappbar"
-    app:fabSize="normal"
-    android:layout_marginTop="30dp"
-    app:tint="#FFFFFF" />
+        android:id="@+id/fabMenu"
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_plus"
+        app:backgroundTint="@color/colorPrimary"
+        app:layout_anchor="@id/bottomappbar"
+        app:fabSize="normal"
+        android:layout_marginTop="30dp"
+        app:tint="#FFFFFF" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:gravity="end"
+        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="35dp"
+        app:layout_anchor="@id/fabMenu"
+        app:layout_anchorGravity="top"
+        app:layout_behavior="com.google.android.material.transformation.FabTransformationScrimBehavior">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mtvMedicamento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medicamento"
+                android:layout_gravity="end|center_vertical"
+                android:layout_margin="1dp"
+                />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabaddMedicamento2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_note_add"
+                app:backgroundTint="@android:color/holo_green_light"
+                app:fabSize="mini"
+                app:tint="#FFFFFF"
+
+                />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mtvGuardar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Guardar"
+                android:layout_gravity="end|center_vertical"
+                android:layout_margin="1dp"
+
+
+                />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabGuardarReceta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_save"
+                app:backgroundTint="@android:color/holo_orange_dark"
+                app:fabSize="mini"
+                app:tint="#FFFFFF"
+
+                />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
