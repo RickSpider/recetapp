@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/loginPageBackgroundColor"
+    android:background="@color/design_default_color_primary_dark"
     tools:context=".fragments.LoginFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
+        android:background="@drawable/rounded_corner_custom"
         android:orientation="vertical"
         android:padding="24dp"
         android:paddingTop="16dp"
@@ -36,8 +37,7 @@
             android:layout_margin="5dp"
             android:gravity="center|center_horizontal|center_vertical"
             android:text="Aplicación de recetario médico."
-            android:textSize="14sp"
-            android:textStyle="italic" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/textView4"
@@ -45,16 +45,18 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
             android:gravity="center|center_horizontal|center_vertical"
-            android:text="Por Favor ingrese sus datos de acceso."
-            android:textSize="14sp"
-            android:textStyle="italic" />
+            android:text="Por favor ingrese sus datos de acceso."
+            android:textSize="14sp" />
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@android:style/TextAppearance.DeviceDefault.Widget.IconMenu.Item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
-            android:hint="@string/username">
+            android:hint="@string/username"
+            app:boxBackgroundColor="#FFFFFF"
+            app:endIconDrawable="@drawable/ic_person"
+            app:endIconMode="custom">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -63,11 +65,14 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/password_text_input"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@android:style/TextAppearance.DeviceDefault.Widget.IconMenu.Item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
-            android:hint="@string/password">
+            android:hint="@string/password"
+            app:boxBackgroundColor="#FFFFFF"
+            app:endIconDrawable="@android:drawable/ic_menu_view"
+            app:endIconMode="password_toggle">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password_edit_text"
@@ -99,6 +104,7 @@
                 android:layout_gravity="center|center_horizontal|center_vertical"
                 android:layout_margin="5dp"
                 android:buttonTint="@color/colorPrimary"
+                android:checked="true"
                 android:gravity="center|center_horizontal|center_vertical"
                 android:text="@string/medico"
                 android:textSize="14sp" />
@@ -111,7 +117,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_iniciar"
-                android:layout_width="wrap_content"
+                android:layout_width="125dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
@@ -120,13 +126,16 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_regitrar"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="141dp"
+                android:layout_height="match_parent"
                 android:layout_marginEnd="12dp"
                 android:layout_marginRight="12dp"
                 android:layout_toStartOf="@+id/btn_iniciar"
                 android:layout_toLeftOf="@+id/btn_iniciar"
-                android:text="@string/register" />
+                android:backgroundTint="@android:color/holo_green_dark"
+                android:text="@string/register"
+                android:textColor="@color/colorAccent"
+                tools:text="Registrarse" />
 
         </RelativeLayout>
 

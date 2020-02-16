@@ -119,7 +119,7 @@ class RegistroFragment : Fragment(R.layout.fragment_registro) {
 
                 val mciudad = sCiudad.selectedItem as mCiudad
 
-                var mpersona = mPersona(null,tvNombre.text.toString(), tvApellido.text.toString(),tvTelefono.text.toString(),
+                var mpersona = mPersona(null,tvNombre.text.toString(), tvApellido.text.toString(),
                     tvCelular.text.toString(),tvRuc.text.toString(),tvCedula.text.toString(),tvCorreo.text.toString(),sexo
                     ,tietDireccion.text.toString(),fechaNacimiento,mciudad, tvPassword.text.toString())
 

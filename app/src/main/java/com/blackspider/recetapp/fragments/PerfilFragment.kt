@@ -86,7 +86,7 @@ class PerfilFragment : Fragment() {
         tvFullNombre.text = "${mmedico.mtitulo.titulo} ${mmedico.mpersona.nombre} ${mmedico.mpersona.apellido}"
         tvCI.text = mmedico.mpersona.ci
         tvEmail.text = mmedico.mpersona.email
-        tvTelefono.text = mmedico.mpersona.telefono
+        //tvTelefono.text = mmedico.mpersona.telefono
         tvCelular.text = mmedico.mpersona.celular
         tvDireccion.text = mmedico.mpersona.direccion
 
@@ -144,7 +144,7 @@ class PerfilFragment : Fragment() {
         tvFullNombre.text = "${mpaciente.mpersona!!.nombre} ${mpaciente.mpersona!!.apellido}"
         tvCI.text = mpaciente.mpersona!!.ci
         tvEmail.text = mpaciente.mpersona!!.email
-        tvTelefono.text = mpaciente.mpersona!!.telefono
+        //tvTelefono.text = mpaciente.mpersona!!.telefono
         tvCelular.text = mpaciente.mpersona!!.celular
         tvGrupoS.text = mpaciente.gruposanguineo
         tvPeso.text = mpaciente.pesocorporal

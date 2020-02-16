@@ -16,4 +16,8 @@
         android:right="5dp"
         android:top="2dp"></padding>
 
+    <item name="android:shadowColor">#000000</item>
+    <item name="android:shadowRadius">5</item>
+    <item name="android:shadowDy">3</item>
+
 </shape>
