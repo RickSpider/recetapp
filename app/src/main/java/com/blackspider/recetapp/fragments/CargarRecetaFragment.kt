@@ -19,6 +19,8 @@ import com.blackspider.recetapp.R
 import com.blackspider.recetapp.adapter.adapterMedicamentoRecetaDato
 import com.blackspider.recetapp.model.mMedicamento
 import com.blackspider.recetapp.model.mPaciente
+import com.blackspider.recetapp.model.mRecetaDetalle
+import com.blackspider.recetapp.model.pk.mPkRecetaDetalle
 import com.blackspider.recetapp.recursos.connector
 import com.blackspider.recetapp.request.requestPaciente
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -34,7 +36,7 @@ import kotlinx.android.synthetic.main.fragment_cargar_receta.*
 class CargarRecetaFragment : Fragment(R.layout.fragment_cargar_receta) {
 
     private val REQUEST_CODE = 1
-    private  var adapter = adapterMedicamentoRecetaDato(ArrayList<mMedicamento>())
+    private  var adapter = adapterMedicamentoRecetaDato(ArrayList<mRecetaDetalle>())
     private lateinit var mCompositeDisposable : CompositeDisposable
     private val args : CargarRecetaFragmentArgs by navArgs()
     private var isOpen = false
@@ -49,12 +51,11 @@ class CargarRecetaFragment : Fragment(R.layout.fragment_cargar_receta) {
         }
 
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-            adapter.lmedicamentos.removeAt(viewHolder.adapterPosition)
-            adapter.notifyDataSetChanged()
 
-            println("esta es la cantidad que hay"+adapter.lmedicamentos.size)
+            adapter.lrecetadetalle.removeAt(viewHolder.adapterPosition)
+            adapter.notifyItemRemoved(viewHolder.adapterPosition)
 
-            adapter
+            println("esta es la cantidad que hay"+adapter.itemCount)
         }
 
         override fun onChildDraw(
@@ -102,9 +103,17 @@ class CargarRecetaFragment : Fragment(R.layout.fragment_cargar_receta) {
 
         fabaddMedicamento2.setOnClickListener{
 
+            var lmedicamento = ArrayList<mMedicamento>()
+
+            for (x in adapter.lrecetadetalle){
+
+                lmedicamento.add(x.mpkrecetadetalle.mmedicamento!!)
+
+            }
+
 
             val dm = parentFragmentManager.beginTransaction()
-            val mdf = MedicamentoDialogFragment(adapter.lmedicamentos)
+            val mdf = MedicamentoDialogFragment(lmedicamento)
             mdf.setTargetFragment(this,REQUEST_CODE)
             mdf.show(dm,"Medicamentos")
 
@@ -192,9 +201,9 @@ class CargarRecetaFragment : Fragment(R.layout.fragment_cargar_receta) {
 
             val array = data!!.getSerializableExtra("datos") as ArrayList<mMedicamento>
 
-            if (adapter.lmedicamentos.size > 0) {
+            if (adapter.lrecetadetalle.size > 0) {
 
-                for (i in 0 until adapter.lmedicamentos.size) {
+                for (i in 0 until adapter.lrecetadetalle.size) {
 
                     if (array.size == 0){
 
@@ -204,7 +213,7 @@ class CargarRecetaFragment : Fragment(R.layout.fragment_cargar_receta) {
 
                         for (j in 0 until array.size) {
 
-                            if (adapter.lmedicamentos[i].medicamentoid == array[j].medicamentoid) {
+                            if (adapter.lrecetadetalle[i].mpkrecetadetalle.mmedicamento!!.medicamentoid == array[j].medicamentoid) {
 
                                 array.removeAt(j)
                                 break
@@ -225,7 +234,9 @@ class CargarRecetaFragment : Fragment(R.layout.fragment_cargar_receta) {
 
             for (i in array) {
 
-                adapter.add(i)
+                val mRecetaDetalle = mRecetaDetalle(mPkRecetaDetalle(null, i),"","")
+
+                adapter.add(mRecetaDetalle)
 
             }
         }

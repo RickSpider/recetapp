@@ -104,14 +104,19 @@ class MedicamentoDialogFragment(val medicamentos: ArrayList<mMedicamento>) : Dia
 
             for (i in lmedicamentos){
 
-                if (i.medicamentoid == medicamentos[cont].medicamentoid){
 
-                    i.isSelected = true
-                    cont++
+                for (j in medicamentos){
 
+                    if (j.medicamentoid == i.medicamentoid){
 
+                        i.isSelected = true
+                        cont++
+                        break
+
+                    }
 
                 }
+
 
                 if (cont == medicamentos.size){
 
