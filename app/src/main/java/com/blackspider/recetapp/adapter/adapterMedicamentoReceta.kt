@@ -56,4 +56,12 @@ class adapterMedicamentoReceta (val lmedicamentos : ArrayList<mRecetaDetalle>): 
     }
 
 
+    fun add(mrecetadetalle: mRecetaDetalle){
+
+        lmedicamentos.add(mrecetadetalle)
+        notifyItemInserted(lmedicamentos.size-1)
+        // notifyDataSetChanged()
+
+    }
+
 }

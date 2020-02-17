@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.ItemTouchHelper.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.blackspider.recetapp.R
+import com.blackspider.recetapp.adapter.adapterMedicamentoReceta
 import com.blackspider.recetapp.adapter.adapterMedicamentoRecetaDato
 import com.blackspider.recetapp.model.mMedicamento
 import com.blackspider.recetapp.model.mPaciente
@@ -36,7 +37,7 @@ import kotlinx.android.synthetic.main.fragment_cargar_receta.*
 class CargarRecetaFragment : Fragment(R.layout.fragment_cargar_receta) {
 
     private val REQUEST_CODE = 1
-    private  var adapter = adapterMedicamentoRecetaDato(ArrayList<mRecetaDetalle>())
+    private  var adapter = adapterMedicamentoReceta(ArrayList<mRecetaDetalle>())
     private lateinit var mCompositeDisposable : CompositeDisposable
     private val args : CargarRecetaFragmentArgs by navArgs()
     private var isOpen = false
@@ -52,8 +53,10 @@ class CargarRecetaFragment : Fragment(R.layout.fragment_cargar_receta) {
 
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
 
-            adapter.lrecetadetalle.removeAt(viewHolder.adapterPosition)
+            adapter.lmedicamentos.removeAt(viewHolder.adapterPosition)
             adapter.notifyItemRemoved(viewHolder.adapterPosition)
+
+
 
             println("esta es la cantidad que hay"+adapter.itemCount)
         }
@@ -83,6 +86,15 @@ class CargarRecetaFragment : Fragment(R.layout.fragment_cargar_receta) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        adapter.setOnClickListener(View.OnClickListener {
+
+            val dm = parentFragmentManager.beginTransaction()
+            val mdf = MedicamentoDatoDialogFragment(adapter.lmedicamentos[rvRecetaDetalle.getChildAdapterPosition(it)])
+            mdf.setTargetFragment(this,REQUEST_CODE)
+            mdf.show(dm,"Medicamentos")
+
+        })
+
         mCompositeDisposable = CompositeDisposable()
 
         fabMenu.setOnClickListener{
@@ -105,7 +117,7 @@ class CargarRecetaFragment : Fragment(R.layout.fragment_cargar_receta) {
 
             var lmedicamento = ArrayList<mMedicamento>()
 
-            for (x in adapter.lrecetadetalle){
+            for (x in adapter.lmedicamentos){
 
                 lmedicamento.add(x.mpkrecetadetalle.mmedicamento!!)
 
@@ -201,9 +213,9 @@ class CargarRecetaFragment : Fragment(R.layout.fragment_cargar_receta) {
 
             val array = data!!.getSerializableExtra("datos") as ArrayList<mMedicamento>
 
-            if (adapter.lrecetadetalle.size > 0) {
+            if (adapter.lmedicamentos.size > 0) {
 
-                for (i in 0 until adapter.lrecetadetalle.size) {
+                for (i in 0 until adapter.lmedicamentos.size) {
 
                     if (array.size == 0){
 
@@ -213,7 +225,7 @@ class CargarRecetaFragment : Fragment(R.layout.fragment_cargar_receta) {
 
                         for (j in 0 until array.size) {
 
-                            if (adapter.lrecetadetalle[i].mpkrecetadetalle.mmedicamento!!.medicamentoid == array[j].medicamentoid) {
+                            if (adapter.lmedicamentos[i].mpkrecetadetalle.mmedicamento!!.medicamentoid == array[j].medicamentoid) {
 
                                 array.removeAt(j)
                                 break

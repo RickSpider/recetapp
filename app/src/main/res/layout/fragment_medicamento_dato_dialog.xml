@@ -1,16 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
+    tools:context=".fragments.MedicamentoDatoDialogFragment"
+    android:orientation="vertical"
     android:background="@drawable/rounded_corner_custom">
 
-    <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+    <TextView
+        android:id="@+id/tvMedicamento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="3dp"
+        android:fontFamily="@font/work_sans_bold"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="18dp" />
+
+    <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         app:cardElevation="0dp"
-        app:cardMaxElevation="0dp">
+        app:cardMaxElevation="0dp"
+        >
 
 
         <LinearLayout
@@ -28,17 +44,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tvMedicamento"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="3dp"
-                    android:fontFamily="@font/work_sans_bold"
-                    android:text="TextView"
-                    android:textColor="@android:color/black"
-                    android:textSize="18dp" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -79,4 +84,5 @@
 
     </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
 
-</FrameLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
