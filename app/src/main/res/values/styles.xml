@@ -7,6 +7,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
+
+
     </style>
 
     <style name="Widget.Recetapp.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
@@ -31,5 +33,12 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
+    <style name="GreenText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">#00FF00</item>
+        <item name="android:textSize">22dp</item>
+    </style>
+    <style name="textoBoton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:elevation">10dp</item>
+    </style>
 
 </resources>

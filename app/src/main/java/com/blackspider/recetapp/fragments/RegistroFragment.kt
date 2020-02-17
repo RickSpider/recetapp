@@ -5,6 +5,7 @@ import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.blackspider.recetapp.R
@@ -17,7 +18,10 @@ import com.blackspider.recetapp.request.requestTitulo
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.fragment_perfil.*
 import kotlinx.android.synthetic.main.fragment_registro.*
+import kotlinx.android.synthetic.main.fragment_registro.tvCelular
+import kotlinx.android.synthetic.main.fragment_registro.tvNroregistro
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -97,6 +101,14 @@ class RegistroFragment : Fragment(R.layout.fragment_registro) {
             val fechaNacimiento : String = sdf.format(cal.time)
 
             var sexo =""
+
+
+
+            esObligatorio(tvEmail.text.toString(),"E-mail");
+            esObligatorio(tvCelular.text.toString(),"Número de cel");
+            esObligatorio(tvApellido.text.toString(),"Apellido(s)");
+            esObligatorio(tvNombre.text.toString(),"Nombre(s)");
+
 
             if(radioFemenino.isChecked || radioMasculino.isChecked){
 
@@ -196,6 +208,8 @@ class RegistroFragment : Fragment(R.layout.fragment_registro) {
 
     }
 
+
+
     private fun loadJsonCiudad(){
 
         val retrofit = connector().create(requestCiudad::class.java)
@@ -218,7 +232,15 @@ class RegistroFragment : Fragment(R.layout.fragment_registro) {
 
 
     }
+    private fun esObligatorio(dato: String, texto: String){
 
+
+        if(dato==""){
+
+            Toast.makeText(this.context, "${texto} obligatorio", Toast.LENGTH_LONG).show()
+
+        }
+    }
     private fun loadJsonTitulo(){
 
         val retrofit = connector().create(requestTitulo::class.java)

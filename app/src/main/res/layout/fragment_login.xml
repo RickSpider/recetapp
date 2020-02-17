@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/design_default_color_primary_dark"
+    android:background="@color/loginPageBackgroundColor"
     tools:context=".fragments.LoginFragment">
 
     <LinearLayout
@@ -18,7 +18,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+
+        >
 
         <ImageView
             android:id="@+id/imageView"
@@ -121,11 +123,15 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:text="@string/login" />
+                android:text="@string/login"
+                style="@style/textoBoton"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:textColor="@color/design_default_color_on_primary"
+                />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_regitrar"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                style="@style/textoBoton"
                 android:layout_width="141dp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="12dp"
@@ -135,7 +141,8 @@
                 android:backgroundTint="@android:color/holo_green_dark"
                 android:text="@string/register"
                 android:textColor="@color/colorAccent"
-                tools:text="Registrarse" />
+
+                />
 
         </RelativeLayout>
 

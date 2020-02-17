@@ -33,8 +33,7 @@
             android:layout_margin="20dp"
             android:text="Una vez enviado el formulario nos etaremos contactando con usted."
             android:textAlignment="center"
-            android:textSize="18sp"
-            android:textStyle="italic" />
+            android:textSize="18sp" />
 
         <RadioGroup
             android:id="@+id/rbTipo"
@@ -255,7 +254,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:hint="Cedula"
+                android:hint="Doc. Identidad"
                 android:pointerIcon="wait">
 
                 <com.google.android.material.textfield.TextInputEditText
