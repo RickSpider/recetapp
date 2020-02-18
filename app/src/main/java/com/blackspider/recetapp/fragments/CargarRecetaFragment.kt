@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.blackspider.recetapp.R
 import com.blackspider.recetapp.adapter.adapterMedicamentoReceta
-import com.blackspider.recetapp.adapter.adapterMedicamentoRecetaDato
 import com.blackspider.recetapp.model.mMedicamento
 import com.blackspider.recetapp.model.mPaciente
 import com.blackspider.recetapp.model.mRecetaDetalle
@@ -34,6 +33,7 @@ import kotlinx.android.synthetic.main.fragment_cargar_receta.*
 /**
  * A simple [Fragment] subclass.
  */
+
 class CargarRecetaFragment : Fragment(R.layout.fragment_cargar_receta) {
 
     private val REQUEST_CODE_DATO = 2
@@ -59,7 +59,7 @@ class CargarRecetaFragment : Fragment(R.layout.fragment_cargar_receta) {
 
 
 
-            println("esta es la cantidad que hay"+adapter.itemCount)
+           // println("esta es la cantidad que hay"+adapter.itemCount)
         }
 
         override fun onChildDraw(
@@ -105,6 +105,8 @@ class CargarRecetaFragment : Fragment(R.layout.fragment_cargar_receta) {
 
         }
 
+
+
         fabGuardarReceta.setOnClickListener{
 
             Toast.makeText(context,"Guardar",Toast.LENGTH_LONG).show()
@@ -138,6 +140,7 @@ class CargarRecetaFragment : Fragment(R.layout.fragment_cargar_receta) {
 
 
 
+
         rvRecetaDetalle.layoutManager = LinearLayoutManager(this.context)
         ItemTouchHelper(itemTouchHelper).attachToRecyclerView(rvRecetaDetalle)
         rvRecetaDetalle.adapter = adapter
@@ -146,7 +149,22 @@ class CargarRecetaFragment : Fragment(R.layout.fragment_cargar_receta) {
 
     }
 
-    fun animacion(){
+   /* private fun postJsonReceta(){
+
+        val mreceta = mreceta()
+
+        val retrofit = connector().create(requestReceta::class.java)
+        mCompositeDisposable.add(
+            retrofit.postReceta(mmedico)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(this::handlePost,this::handleError)
+        )
+
+
+    }*/
+
+    private fun animacion(){
 
 
         val fabOpen = AnimationUtils.loadAnimation(context,R.anim.fab_open)
