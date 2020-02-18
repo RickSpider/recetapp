@@ -13,9 +13,7 @@ import android.view.Window
 import androidx.fragment.app.DialogFragment
 
 import com.blackspider.recetapp.R
-import com.blackspider.recetapp.model.mMedicamento
 import com.blackspider.recetapp.model.mRecetaDetalle
-import kotlinx.android.synthetic.main.fragment_cargar_receta.*
 import kotlinx.android.synthetic.main.fragment_medicamento_dato_dialog.*
 
 /**
@@ -49,6 +47,13 @@ class MedicamentoDatoDialogFragment(var mrecetadetalle : mRecetaDetalle) : Dialo
         super.onViewCreated(view, savedInstanceState)
 
         tvMedicamento.text = mrecetadetalle.mpkrecetadetalle.mmedicamento!!.medicamento
+
+        if (!mrecetadetalle.indicaciones.equals("")){
+
+            tietIndicaciones.setText(mrecetadetalle.indicaciones)
+            tietDosis.setText(mrecetadetalle.dosis)
+
+        }
 
         btnAceptar.setOnClickListener {
 
