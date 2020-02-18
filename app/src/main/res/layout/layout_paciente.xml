@@ -22,7 +22,7 @@
             android:layout_gravity="center"
             android:layout_margin="5dp"
             android:layout_weight="0"
-            app:srcCompat="@mipmap/ic_launcher_round" />
+            app:srcCompat="@drawable/ic_person_black" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -59,6 +59,16 @@
                 android:text="TextView"
                 android:textSize="12sp"
                 tool:text="0961748907" />
+
+            <TextView
+                android:id="@+id/tvCedula"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:fontFamily="@font/work_sans"
+                android:text="TextView"
+                android:textSize="12sp"
+                tool:text="0000" />
 
             <View
                 android:id="@+id/divider"

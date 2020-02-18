@@ -51,7 +51,13 @@ class PerfilFragment : Fragment() {
 
         }
 
-        //pacienteid = args
+        botonEditar.setOnClickListener{
+
+            val action = PerfilFragmentDirections.actionPerfilFragmentToPerfilFragmentEdit(args.id, true, args.medicoid)
+            findNavController().navigate(action)
+
+        }
+
 
         mCompositeDisposable = CompositeDisposable()
 

@@ -24,6 +24,17 @@
         android:layout_marginBottom="?android:attr/actionBarSize">
 
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:text="Lista de pacientes"
+            android:textAlignment="center"
+            android:textColor="@color/grisOscuro"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvPacientes"
             android:layout_width="match_parent"

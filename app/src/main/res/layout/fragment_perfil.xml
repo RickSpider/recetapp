@@ -143,6 +143,7 @@
                     android:layout_marginRight="2dp"
                     android:layout_marginBottom="2dp"
                     android:text="TextView"
+                    android:visibility="invisible"
                     android:textSize="14sp" />
 
                 <TextView
@@ -263,9 +264,19 @@
                     android:layout_marginBottom="2dp"
                     android:text="TextView"
                     android:visibility="gone" />
+
+
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
+
+        <Button
+            android:id="@+id/botonEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/design_default_color_error"
+            android:text="Editar perfil" />
 
     </LinearLayout>
 

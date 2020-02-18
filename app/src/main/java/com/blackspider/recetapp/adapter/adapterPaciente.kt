@@ -49,6 +49,7 @@ class adapterPaciente(var lpacientes : ArrayList<mMedicoPaciente>): RecyclerView
         holder.tvfullname.text = "${mpaciente!!.mpersona!!.nombre} ${mpaciente.mpersona!!.apellido}"
         holder.tvcelular.text = mpaciente!!.mpersona!!.celular
         holder.tvemail.text = mpaciente!!.mpersona!!.email
+        holder.tvcedula.text=mpaciente!!.mpersona!!.ci
     }
 
     fun setOnClickListener(listener : View.OnClickListener){

@@ -69,6 +69,9 @@
             android:name="medicoid"
             app:argType="long"
             android:defaultValue="0L" />
+        <action
+            android:id="@+id/action_perfilFragment_to_perfilFragmentEdit"
+            app:destination="@id/perfilFragmentEdit" />
     </fragment>
     <fragment
         android:id="@+id/medicoFragment"
@@ -87,6 +90,9 @@
         <argument
             android:name="recetaid"
             app:argType="long" />
+        <action
+            android:id="@+id/action_recetaFragment_self"
+            app:destination="@id/recetaFragment" />
     </fragment>
     <fragment
         android:id="@+id/cargarRecetaFragment"
@@ -98,5 +104,22 @@
         <argument
             android:name="medicoid"
             app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/perfilFragmentEdit"
+        android:name="com.blackspider.recetapp.fragments.PerfilFragmentEdit"
+        android:label="fragment_perfil_edit"
+        tools:layout="@layout/fragment_perfil_edit" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <argument
+            android:name="medico"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="medicoid"
+            app:argType="long"
+            android:defaultValue="0L" />
     </fragment>
 </navigation>
