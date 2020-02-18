@@ -79,10 +79,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="?android:attr/listDivider" />
+
+
             </LinearLayout>
+
+
         </LinearLayout>
 
     </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAceptar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|center_horizontal|end"
+        android:layout_marginEnd="10dp"
+        android:text="Aceptar" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
