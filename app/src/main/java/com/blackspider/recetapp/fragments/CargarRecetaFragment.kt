@@ -36,8 +36,9 @@ import kotlinx.android.synthetic.main.fragment_cargar_receta.*
  */
 class CargarRecetaFragment : Fragment(R.layout.fragment_cargar_receta) {
 
+    private val REQUEST_CODE_DATO = 2
     private val REQUEST_CODE = 1
-    private  var adapter = adapterMedicamentoReceta(ArrayList<mRecetaDetalle>())
+    private var adapter = adapterMedicamentoReceta(ArrayList<mRecetaDetalle>())
     private lateinit var mCompositeDisposable : CompositeDisposable
     private val args : CargarRecetaFragmentArgs by navArgs()
     private var isOpen = false
@@ -90,7 +91,7 @@ class CargarRecetaFragment : Fragment(R.layout.fragment_cargar_receta) {
 
             val dm = parentFragmentManager.beginTransaction()
             val mdf = MedicamentoDatoDialogFragment(adapter.lmedicamentos[rvRecetaDetalle.getChildAdapterPosition(it)])
-            mdf.setTargetFragment(this,REQUEST_CODE)
+            mdf.setTargetFragment(this,REQUEST_CODE_DATO)
             mdf.show(dm,"Medicamentos")
 
         })
@@ -209,6 +210,8 @@ class CargarRecetaFragment : Fragment(R.layout.fragment_cargar_receta) {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
+
+
         if (requestCode == REQUEST_CODE){
 
             val array = data!!.getSerializableExtra("datos") as ArrayList<mMedicamento>
@@ -242,6 +245,8 @@ class CargarRecetaFragment : Fragment(R.layout.fragment_cargar_receta) {
 
                 }
 
+
+
             }
 
             for (i in array) {
@@ -251,7 +256,33 @@ class CargarRecetaFragment : Fragment(R.layout.fragment_cargar_receta) {
                 adapter.add(mRecetaDetalle)
 
             }
+
+        }else {
+
+            if (requestCode == REQUEST_CODE_DATO) {
+
+                for(x in adapter.lmedicamentos){
+
+                    if (data != null && x.mpkrecetadetalle.mmedicamento!!.medicamentoid == data.extras!!["id"]){
+
+                        x.indicaciones = data.extras!!["indicaciones"].toString()
+                        x.dosis = data.extras!!["dosis"].toString()
+                        adapter.notifyDataSetChanged()
+                        break
+
+                    }
+
+                }
+
+            }
         }
+
+
+
+
+
+
+
     }
 
 

@@ -1,6 +1,7 @@
 package com.blackspider.recetapp.fragments
 
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -12,6 +13,7 @@ import android.view.Window
 import androidx.fragment.app.DialogFragment
 
 import com.blackspider.recetapp.R
+import com.blackspider.recetapp.model.mMedicamento
 import com.blackspider.recetapp.model.mRecetaDetalle
 import kotlinx.android.synthetic.main.fragment_cargar_receta.*
 import kotlinx.android.synthetic.main.fragment_medicamento_dato_dialog.*
@@ -20,6 +22,8 @@ import kotlinx.android.synthetic.main.fragment_medicamento_dato_dialog.*
  * A simple [Fragment] subclass.
  */
 class MedicamentoDatoDialogFragment(var mrecetadetalle : mRecetaDetalle) : DialogFragment() {
+
+    private val REQUEST_CODE_DATO = 2
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +49,26 @@ class MedicamentoDatoDialogFragment(var mrecetadetalle : mRecetaDetalle) : Dialo
         super.onViewCreated(view, savedInstanceState)
 
         tvMedicamento.text = mrecetadetalle.mpkrecetadetalle.mmedicamento!!.medicamento
+
+        btnAceptar.setOnClickListener {
+
+            sendResult()
+
+        }
+
+    }
+
+
+    private fun sendResult(){
+
+
+        val intent = Intent()
+        intent.putExtra("id", mrecetadetalle.mpkrecetadetalle.mmedicamento!!.medicamentoid)
+        intent.putExtra("indicaciones", tietIndicaciones.text.toString())
+        intent.putExtra("dosis", tietDosis.text.toString())
+        targetFragment!!.onActivityResult(targetRequestCode, REQUEST_CODE_DATO, intent)
+        dismiss()
+
 
 
     }
