@@ -12,13 +12,19 @@
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_registroFragment"
-            app:destination="@id/registroFragment" />
+            app:destination="@id/registroFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_out_left"/>
         <action
             android:id="@+id/action_loginFragment_to_pacienteFragment"
-            app:destination="@id/pacienteFragment" />
+            app:destination="@id/pacienteFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_out_left"/>
         <action
             android:id="@+id/action_loginFragment_to_medicoFragment"
-            app:destination="@id/medicoFragment" />
+            app:destination="@id/medicoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_out_left"/>
     </fragment>
     <fragment
         android:id="@+id/pacienteFragment"
@@ -27,13 +33,17 @@
         tools:layout="@layout/fragment_paciente" >
         <action
             android:id="@+id/action_pacienteFragment_to_perfilFragment"
-            app:destination="@id/perfilFragment" />
+            app:destination="@id/perfilFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_out_left"/>
         <argument
             android:name="pacienteid"
             app:argType="long" />
         <action
             android:id="@+id/action_pacienteFragment_to_recetaFragment"
-            app:destination="@id/recetaFragment" />
+            app:destination="@id/recetaFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_out_left"/>
         <argument
             android:name="medico"
             app:argType="boolean"
@@ -44,7 +54,9 @@
             android:defaultValue="0L" />
         <action
             android:id="@+id/action_pacienteFragment_to_cargarRecetaFragment"
-            app:destination="@id/cargarRecetaFragment" />
+            app:destination="@id/cargarRecetaFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_out_left"/>
     </fragment>
     <fragment
         android:id="@+id/registroFragment"
@@ -58,7 +70,9 @@
         tools:layout="@layout/fragment_perfil" >
         <action
             android:id="@+id/action_perfilFragment_to_pacienteFragment2"
-            app:destination="@id/pacienteFragment" />
+            app:destination="@id/pacienteFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_out_left"/>
         <argument android:name="id"
             app:argType="long" />
         <argument
@@ -80,7 +94,9 @@
         tools:layout="@layout/fragment_medico" >
         <action
             android:id="@+id/action_medicoFragment_to_perfilFragment"
-            app:destination="@+id/perfilFragment" />
+            app:destination="@id/perfilFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_out_left"/>
     </fragment>
     <fragment
         android:id="@+id/recetaFragment"
