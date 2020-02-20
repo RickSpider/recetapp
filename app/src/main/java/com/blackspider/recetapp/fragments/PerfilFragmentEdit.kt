@@ -85,8 +85,8 @@ class PerfilFragmentEdit : Fragment() {
 
     private fun handleMedico(mmedico : mMedico){
 
-        tvFullNombre.text = "${mmedico.mtitulo.titulo} ${mmedico.mpersona.nombre} ${mmedico.mpersona.apellido}"
-        tvCI.text = mmedico.mpersona.ci
+        tvFullNombre.text = "${mmedico.mtitulo!!.titulo} ${mmedico.mpersona!!.nombre} ${mmedico.mpersona.apellido}"
+        tvCI.text = mmedico.mpersona!!.ci
 
 
         etvDireccion.setText(mmedico.mpersona.direccion)

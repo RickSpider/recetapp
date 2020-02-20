@@ -5,11 +5,14 @@ import android.content.Intent
 import android.graphics.Canvas
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.FragmentNavigator
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ItemTouchHelper.*
@@ -17,12 +20,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.blackspider.recetapp.R
 import com.blackspider.recetapp.adapter.adapterMedicamentoReceta
-import com.blackspider.recetapp.model.mMedicamento
-import com.blackspider.recetapp.model.mPaciente
-import com.blackspider.recetapp.model.mRecetaDetalle
+import com.blackspider.recetapp.model.*
 import com.blackspider.recetapp.model.pk.mPkRecetaDetalle
 import com.blackspider.recetapp.recursos.connector
 import com.blackspider.recetapp.request.requestPaciente
+import com.blackspider.recetapp.request.requestReceta
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -42,6 +44,9 @@ class CargarRecetaFragment : Fragment(R.layout.fragment_cargar_receta) {
     private lateinit var mCompositeDisposable : CompositeDisposable
     private val args : CargarRecetaFragmentArgs by navArgs()
     private var isOpen = false
+    //private var  mrecetadetalles = mRecetaDetalles(null,null,null)
+    private lateinit var mreceta : mReceta
+    private var postear = false
 
     private val itemTouchHelper = object : SimpleCallback(0, RIGHT or LEFT ){
         override fun onMove(
@@ -109,10 +114,64 @@ class CargarRecetaFragment : Fragment(R.layout.fragment_cargar_receta) {
 
         fabGuardarReceta.setOnClickListener{
 
-            Toast.makeText(context,"Guardar",Toast.LENGTH_LONG).show()
+            if (!postear){
 
-            fabMenu.isExpanded = !fabMenu.isExpanded
-            animacion()
+                if (adapter.lmedicamentos.size > 0 && tietDiagnostico.text.toString().length > 1 ){
+
+                    val set = HashSet<mRecetaDetalles>()
+
+                    for (x in adapter.lmedicamentos){
+
+                        val mrecetadetalles = mRecetaDetalles(x.mpkrecetadetalle.mmedicamento,x.indicaciones,x.dosis)
+
+                        /*
+
+                        mrecetadetalles.mmedicamento = x.mpkrecetadetalle.mmedicamento
+                        mrecetadetalles.indicaciones = x.indicaciones
+                        mrecetadetalles.dosis = x.dosis
+                        */
+
+                        set.add(mrecetadetalles)
+
+                    }
+
+                    val mmedico = mMedico(args.medicoid,null,null,null,null)
+                    val mpaciente = mPaciente (args.pacientid, null,null,null)
+
+                    mreceta = mReceta(null,mmedico,mpaciente,null,tietDiagnostico.text.toString(),"normal", set)
+
+                    println("la cantidad del set es ${mreceta.mlrecetadetalle!!.size}")
+                    println("la cantidad es ${mreceta.mlrecetadetalle!!.size}")
+
+                    fabMenu.isExpanded = !fabMenu.isExpanded
+                    animacion()
+
+                    postear = true
+
+                    postJsonReceta()
+
+
+
+
+
+
+
+                }else{
+
+                    Toast.makeText(context,"Debes de Cargar medicamentos y poner el diagnostico",Toast.LENGTH_LONG).show()
+
+                }
+
+
+            }
+
+
+
+
+
+
+            //findNavController().popBackStack()
+
 
         }
 
@@ -149,20 +208,24 @@ class CargarRecetaFragment : Fragment(R.layout.fragment_cargar_receta) {
 
     }
 
-   /* private fun postJsonReceta(){
-
-        val mreceta = mreceta()
+    private fun postJsonReceta(){
 
         val retrofit = connector().create(requestReceta::class.java)
         mCompositeDisposable.add(
-            retrofit.postReceta(mmedico)
+            retrofit.postReceta(mreceta)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(this::handlePost,this::handleError)
+                .subscribe(this::handlePostReceta,this::handleError)
         )
 
 
-    }*/
+    }
+
+    private fun handlePostReceta(){
+
+        findNavController().popBackStack()
+
+    }
 
     private fun animacion(){
 
@@ -307,16 +370,18 @@ class CargarRecetaFragment : Fragment(R.layout.fragment_cargar_receta) {
     private fun handleError(error: Throwable) {
 
         Toast.makeText(this.context, "Error ${error.localizedMessage}", Toast.LENGTH_LONG).show()
-        println(error.localizedMessage)
+        postear = false
+       // println(error.localizedMessage)
 
     }
 
     override fun onDestroy() {
         super.onDestroy()
 
-        mCompositeDisposable!!.clear()
-        mCompositeDisposable!!.dispose()
+        mCompositeDisposable.clear()
+        mCompositeDisposable.dispose()
     }
+
 
 
 }

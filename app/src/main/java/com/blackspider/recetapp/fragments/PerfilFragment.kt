@@ -89,8 +89,8 @@ class PerfilFragment : Fragment() {
 
     private fun handleMedico(mmedico : mMedico){
 
-        tvFullNombre.text = "${mmedico.mtitulo.titulo} ${mmedico.mpersona.nombre} ${mmedico.mpersona.apellido}"
-        tvCI.text = mmedico.mpersona.ci
+        tvFullNombre.text = "${mmedico.mtitulo!!.titulo} ${mmedico.mpersona!!.nombre} ${mmedico.mpersona.apellido}"
+        tvCI.text = mmedico.mpersona!!.ci
         tvEmail.text = mmedico.mpersona.email
         //tvTelefono.text = mmedico.mpersona.telefono
         tvCelular.text = mmedico.mpersona.celular

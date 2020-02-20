@@ -90,9 +90,6 @@
         <argument
             android:name="recetaid"
             app:argType="long" />
-        <action
-            android:id="@+id/action_recetaFragment_self"
-            app:destination="@id/recetaFragment" />
     </fragment>
     <fragment
         android:id="@+id/cargarRecetaFragment"

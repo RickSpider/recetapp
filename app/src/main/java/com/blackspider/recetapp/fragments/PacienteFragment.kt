@@ -38,6 +38,8 @@ class PacienteFragment : Fragment() {
     private val args : PacienteFragmentArgs by navArgs()
     private lateinit var adapter : adapterReceta
 
+    private var resume = false
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,6 +53,8 @@ class PacienteFragment : Fragment() {
 
         return view
     }
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -145,8 +149,8 @@ class PacienteFragment : Fragment() {
 
         adapter.setOnClickListener(View.OnClickListener{
 
-            val recetaid: Long = adapter.lrecetas[rvRecetas.getChildAdapterPosition(it)].recetaid
-            val action = PacienteFragmentDirections.actionPacienteFragmentToRecetaFragment(recetaid)
+            val recetaid = adapter.lrecetas[rvRecetas.getChildAdapterPosition(it)].recetaid
+            val action = PacienteFragmentDirections.actionPacienteFragmentToRecetaFragment(recetaid!!)
             findNavController().navigate(action)
 
         })
@@ -234,6 +238,22 @@ class PacienteFragment : Fragment() {
     }
 
 
+    override fun onResume() {
+        super.onResume()
 
+        if(resume){
+
+            //Toast.makeText(this.context,"Resumio",Toast.LENGTH_LONG).show()
+            loadJsonReceta()
+
+        }
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        resume = true
+    }
 }
 

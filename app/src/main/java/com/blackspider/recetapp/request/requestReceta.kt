@@ -24,7 +24,7 @@ interface requestReceta{
     @GET("receta/{recetaid}")
     fun getReceta (@Path("recetaid") recetaid : Long) : Observable<mReceta>
 
-    @POST
+    @POST("receta/")
     fun postReceta (@Body mreceta : mReceta) : Completable
 
 }

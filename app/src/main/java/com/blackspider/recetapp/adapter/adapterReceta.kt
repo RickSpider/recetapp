@@ -49,7 +49,7 @@ class adapterReceta (var lrecetas : ArrayList<mReceta>):RecyclerView.Adapter<Rec
 
         val mreceta = lrecetas.get(position)
 
-        holder.tvmedico.text = "${mreceta.mmedico!!.mtitulo.titulo} ${mreceta.mmedico!!.mpersona.nombre} ${mreceta.mmedico!!.mpersona.apellido}"
+        holder.tvmedico.text = "${mreceta.mmedico!!.mtitulo!!.titulo} ${mreceta.mmedico!!.mpersona!!.nombre} ${mreceta.mmedico!!.mpersona!!.apellido}"
         holder.tvdiagnostico.text = mreceta.diagnostico
         holder.tvestado.text = mreceta.estado
         holder.tvfecha.text = mreceta.fchreceta
@@ -76,7 +76,7 @@ class adapterReceta (var lrecetas : ArrayList<mReceta>):RecyclerView.Adapter<Rec
 
                     for(mr in auxarray){
 
-                        val nc = mr.mmedico!!.mpersona.nombre!!+" "+mr.mmedico!!.mpersona.apellido!!
+                        val nc = mr.mmedico!!.mpersona!!.nombre!!+" "+mr.mmedico!!.mpersona!!.apellido!!
 
                         if (nc.toLowerCase().contains(charString)){
 
