@@ -1,6 +1,7 @@
 package com.blackspider.recetapp.fragments
 
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.*
 
@@ -10,12 +11,14 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuItemCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.TransitionManager
 import com.blackspider.recetapp.R
 import com.blackspider.recetapp.adapter.adapterPaciente
 import com.blackspider.recetapp.model.mMedicoPaciente
 import com.blackspider.recetapp.recursos.connector
+import com.blackspider.recetapp.recursos.sessionManager
 import com.blackspider.recetapp.request.requestMedicoPaciente
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -29,13 +32,27 @@ import kotlinx.android.synthetic.main.toolbar.view.*
  */
 class MedicoFragment : Fragment() {
 
-    val medicoid : Long = 2
+    private var medicoid : Long? = null
     private lateinit var mCompositeDisposable : CompositeDisposable
     private lateinit var adapter : adapterPaciente
+    private val args : MedicoFragmentArgs by navArgs()
+    private lateinit var session : sessionManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
+
+        session = sessionManager(activity!!.applicationContext)
+
+        if (session.checkLogin()){
+
+            medicoid = session.getUserDetails().id
+
+        }else{
+
+            findNavController().navigate(R.id.loginFragment)
+
+        }
 
     }
 
@@ -75,7 +92,7 @@ class MedicoFragment : Fragment() {
     private fun loadJsonPacientes() {
         val retrofit = connector().create(requestMedicoPaciente::class.java)
         mCompositeDisposable.add(
-            retrofit.getPacientesxMedicos(medicoid)
+            retrofit.getPacientesxMedicos(medicoid!!)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(this::handlePacientes, this::handleError)
@@ -89,7 +106,7 @@ class MedicoFragment : Fragment() {
         adapter.setOnClickListener(View.OnClickListener {
 
             val pacienteid: Long = adapter.lpacientes[rvPacientes.getChildAdapterPosition(it)].mpkmedicopaciente.mpaciente!!.pacienteid!!
-            val action = MedicoFragmentDirections.actionMedicoFragmentToPerfilFragment(pacienteid,false,medicoid)
+            val action = MedicoFragmentDirections.actionMedicoFragmentToPerfilFragment(pacienteid,false,medicoid!!)
             findNavController().navigate(action)
 
         })
@@ -170,7 +187,7 @@ class MedicoFragment : Fragment() {
             R.id.action_perfil -> {
 
 
-                val action = MedicoFragmentDirections.actionMedicoFragmentToPerfilFragment(medicoid, true)
+                val action = MedicoFragmentDirections.actionMedicoFragmentToPerfilFragment(medicoid!!, true)
                 findNavController().navigate(action)
 
 

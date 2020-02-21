@@ -97,6 +97,9 @@
             app:destination="@id/perfilFragment"
             app:enterAnim="@anim/slide_in_right"
             app:popEnterAnim="@anim/slide_in_out_left"/>
+        <argument
+            android:name="medicoid"
+            app:argType="long" />
     </fragment>
     <fragment
         android:id="@+id/recetaFragment"
