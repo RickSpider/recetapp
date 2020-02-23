@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@+id/loginFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -14,28 +14,29 @@
             android:id="@+id/action_loginFragment_to_registroFragment"
             app:destination="@id/registroFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:popEnterAnim="@anim/slide_in_out_left"/>
+            app:popEnterAnim="@anim/slide_in_out_left" />
         <action
             android:id="@+id/action_loginFragment_to_pacienteFragment"
             app:destination="@id/pacienteFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:popEnterAnim="@anim/slide_in_out_left"/>
+            app:popEnterAnim="@anim/slide_in_out_left" />
         <action
             android:id="@+id/action_loginFragment_to_medicoFragment"
             app:destination="@id/medicoFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:popEnterAnim="@anim/slide_in_out_left"/>
+            app:popEnterAnim="@anim/slide_in_out_left"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/pacienteFragment"
         android:name="com.blackspider.recetapp.fragments.PacienteFragment"
         android:label="fragment_paciente"
-        tools:layout="@layout/fragment_paciente" >
+        tools:layout="@layout/fragment_paciente">
         <action
             android:id="@+id/action_pacienteFragment_to_perfilFragment"
             app:destination="@id/perfilFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:popEnterAnim="@anim/slide_in_out_left"/>
+            app:popEnterAnim="@anim/slide_in_out_left" />
         <argument
             android:name="pacienteid"
             app:argType="long" />
@@ -43,20 +44,20 @@
             android:id="@+id/action_pacienteFragment_to_recetaFragment"
             app:destination="@id/recetaFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:popEnterAnim="@anim/slide_in_out_left"/>
+            app:popEnterAnim="@anim/slide_in_out_left" />
         <argument
             android:name="medico"
-            app:argType="boolean"
-            android:defaultValue="false" />
+            android:defaultValue="false"
+            app:argType="boolean" />
         <argument
             android:name="medicoid"
-            app:argType="long"
-            android:defaultValue="0L" />
+            android:defaultValue="0L"
+            app:argType="long" />
         <action
             android:id="@+id/action_pacienteFragment_to_cargarRecetaFragment"
             app:destination="@id/cargarRecetaFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:popEnterAnim="@anim/slide_in_out_left"/>
+            app:popEnterAnim="@anim/slide_in_out_left" />
     </fragment>
     <fragment
         android:id="@+id/registroFragment"
@@ -67,22 +68,23 @@
         android:id="@+id/perfilFragment"
         android:name="com.blackspider.recetapp.fragments.PerfilFragment"
         android:label="fragment_perfil"
-        tools:layout="@layout/fragment_perfil" >
+        tools:layout="@layout/fragment_perfil">
         <action
             android:id="@+id/action_perfilFragment_to_pacienteFragment2"
             app:destination="@id/pacienteFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:popEnterAnim="@anim/slide_in_out_left"/>
-        <argument android:name="id"
+            app:popEnterAnim="@anim/slide_in_out_left" />
+        <argument
+            android:name="id"
             app:argType="long" />
         <argument
             android:name="medico"
-            app:argType="boolean"
-            android:defaultValue="false" />
+            android:defaultValue="false"
+            app:argType="boolean" />
         <argument
             android:name="medicoid"
-            app:argType="long"
-            android:defaultValue="0L" />
+            android:defaultValue="0L"
+            app:argType="long" />
         <action
             android:id="@+id/action_perfilFragment_to_perfilFragmentEdit"
             app:destination="@id/perfilFragmentEdit" />
@@ -91,12 +93,12 @@
         android:id="@+id/medicoFragment"
         android:name="com.blackspider.recetapp.fragments.MedicoFragment"
         android:label="fragment_medico"
-        tools:layout="@layout/fragment_medico" >
+        tools:layout="@layout/fragment_medico">
         <action
             android:id="@+id/action_medicoFragment_to_perfilFragment"
             app:destination="@id/perfilFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:popEnterAnim="@anim/slide_in_out_left"/>
+            app:popEnterAnim="@anim/slide_in_out_left" />
         <argument
             android:name="medicoid"
             app:argType="long" />
@@ -105,7 +107,7 @@
         android:id="@+id/recetaFragment"
         android:name="com.blackspider.recetapp.fragments.RecetaFragment"
         android:label="fragment_receta"
-        tools:layout="@layout/fragment_receta" >
+        tools:layout="@layout/fragment_receta">
         <argument
             android:name="recetaid"
             app:argType="long" />
@@ -114,8 +116,9 @@
         android:id="@+id/cargarRecetaFragment"
         android:name="com.blackspider.recetapp.fragments.CargarRecetaFragment"
         android:label="fragment_cargar_receta"
-        tools:layout="@layout/fragment_cargar_receta" >
-        <argument android:name="pacientid"
+        tools:layout="@layout/fragment_cargar_receta">
+        <argument
+            android:name="pacientid"
             app:argType="long" />
         <argument
             android:name="medicoid"
@@ -125,17 +128,17 @@
         android:id="@+id/perfilFragmentEdit"
         android:name="com.blackspider.recetapp.fragments.PerfilFragmentEdit"
         android:label="fragment_perfil_edit"
-        tools:layout="@layout/fragment_perfil_edit" >
+        tools:layout="@layout/fragment_perfil_edit">
         <argument
             android:name="id"
             app:argType="long" />
         <argument
             android:name="medico"
-            app:argType="boolean"
-            android:defaultValue="false" />
+            android:defaultValue="false"
+            app:argType="boolean" />
         <argument
             android:name="medicoid"
-            app:argType="long"
-            android:defaultValue="0L" />
+            android:defaultValue="0L"
+            app:argType="long" />
     </fragment>
 </navigation>

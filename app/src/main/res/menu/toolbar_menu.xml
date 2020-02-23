@@ -11,18 +11,20 @@
         android:title="@string/search_title"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="ifRoom|collapseActionView"
-
-
-
         />
 
     <item
         android:id="@+id/action_perfil"
         android:icon="@drawable/ic_person"
         android:title="Perfil"
-
         app:showAsAction="collapseActionView|always"
         />
+
+    <item
+        android:id="@+id/action_logout"
+        android:icon="@drawable/ic_close_24px"
+        android:title="Logout"
+        app:showAsAction="collapseActionView|always" />
 
 
 </menu>

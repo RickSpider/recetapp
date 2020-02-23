@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuItemCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -190,6 +191,15 @@ class MedicoFragment : Fragment() {
                 val action = MedicoFragmentDirections.actionMedicoFragmentToPerfilFragment(medicoid!!, true)
                 findNavController().navigate(action)
 
+
+            }
+
+            R.id.action_logout -> {
+
+                session.logoutUser()
+                val navBuilder = NavOptions.Builder()
+                val navOptions: NavOptions = navBuilder.setPopUpTo(R.id.nav_graph,true).build()
+                findNavController().navigate(R.id.loginFragment,null ,navOptions)
 
             }
 

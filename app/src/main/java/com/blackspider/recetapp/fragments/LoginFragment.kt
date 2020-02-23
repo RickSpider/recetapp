@@ -2,9 +2,10 @@ package com.blackspider.recetapp.fragments
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.blackspider.recetapp.R
 import com.blackspider.recetapp.model.mLogin
@@ -15,6 +16,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_login.*
+
 
 /**
  * A simple [Fragment] subclass.
@@ -40,18 +42,23 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         if (session.checkLogin()) {
 
+            val navBuilder = NavOptions.Builder()
+            val navOptions: NavOptions = navBuilder.setPopUpTo(R.id.nav_graph,true).build()
+
 
             if (!session.getUserDetails().medico) {
-              //  val action = LoginFragmentDirections.actionLoginFragmentToPacienteFragment(session.getUserDetails().id.toLong())
-                //findNavController().navigate(action)
 
-                findNavController().navigate(R.id.medicoFragment)
+                val action = LoginFragmentDirections.actionLoginFragmentToPacienteFragment(session.getUserDetails().id)
+                findNavController().navigate(action,navOptions)
+
+
+                //findNavController().navigate(R.id.medicoFragment)
 
 
             }else{
 
                 val action = LoginFragmentDirections.actionLoginFragmentToMedicoFragment(session.getUserDetails().id)
-                findNavController().navigate(action)
+                findNavController().navigate(action,navOptions)
 
             }
         }
@@ -126,17 +133,22 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         if(login != null){
 
+            val navBuilder = NavOptions.Builder()
+            val navOptions: NavOptions = navBuilder.setPopUpTo(R.id.nav_graph,true).build()
+
             session.createLoginSession(login.id!!,login.medico)
 
             if(login.medico){
 
+
+
                 val action = LoginFragmentDirections.actionLoginFragmentToMedicoFragment(login.id)
-                findNavController().navigate(action)
+                findNavController().navigate(action,navOptions)
 
             }else{
 
                 val action = LoginFragmentDirections.actionLoginFragmentToPacienteFragment(login.id)
-                findNavController().navigate(action)
+                findNavController().navigate(action,navOptions)
 
             }
 

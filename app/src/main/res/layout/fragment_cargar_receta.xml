@@ -193,7 +193,7 @@
         style="@style/Widget.MaterialComponents.FloatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_plus"
+        android:src="@drawable/ic_more_vert"
         app:backgroundTint="@color/colorPrimary"
         app:layout_anchor="@id/bottomappbar"
         app:fabSize="normal"

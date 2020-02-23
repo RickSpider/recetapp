@@ -95,13 +95,13 @@ class sessionManager {
 
     }
 
-   /* fun logoutUser() {
+    fun logoutUser() {
         // Clearing all data from Shared Preferences
         editor!!.clear()
         editor!!.commit()
 
         // After logout redirect user to Loing Activity
-        val i = Intent(_context, LoginActivity::class.java)
+       /* val i = Intent(_context, LoginActivity::class.java)
         // Closing all the Activities
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
 
@@ -109,8 +109,8 @@ class sessionManager {
         i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
 
         // Staring Login Activity
-        _context!!.startActivity(i)
-    }*/
+        _context!!.startActivity(i)*/
+    }
 
     private fun isLoggedIn(): Boolean {
         return pref!!.getBoolean(IS_LOGIN, false)

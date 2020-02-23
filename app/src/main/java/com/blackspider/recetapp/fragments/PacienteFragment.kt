@@ -10,6 +10,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuItemCompat
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +21,7 @@ import com.blackspider.recetapp.adapter.adapterReceta
 import com.blackspider.recetapp.model.mPaciente
 import com.blackspider.recetapp.model.mReceta
 import com.blackspider.recetapp.recursos.connector
+import com.blackspider.recetapp.recursos.sessionManager
 import com.blackspider.recetapp.request.requestPaciente
 import com.blackspider.recetapp.request.requestReceta
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -37,6 +39,7 @@ class PacienteFragment : Fragment() {
     //private val pacienteid: Long = 1
     private val args : PacienteFragmentArgs by navArgs()
     private lateinit var adapter : adapterReceta
+    private lateinit var session : sessionManager
 
     private var resume = false
 
@@ -58,6 +61,8 @@ class PacienteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        session = sessionManager(activity!!.applicationContext)
 
         fabAddReceta.setOnClickListener {
 
@@ -230,6 +235,15 @@ class PacienteFragment : Fragment() {
                 val action = PacienteFragmentDirections.actionPacienteFragmentToPerfilFragment(args.pacienteid, false, 0)
                 findNavController().navigate(action)
 
+
+            }
+
+            R.id.action_logout -> {
+
+                session.logoutUser()
+                val navBuilder = NavOptions.Builder()
+                val navOptions: NavOptions = navBuilder.setPopUpTo(R.id.nav_graph,true).build()
+                findNavController().navigate(R.id.loginFragment,null ,navOptions)
 
             }
 
