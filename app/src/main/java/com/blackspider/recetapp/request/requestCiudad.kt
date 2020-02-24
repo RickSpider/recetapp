@@ -8,7 +8,7 @@ import retrofit2.http.GET
 
 interface requestCiudad{
 
-    @GET("ciudad/")
+    @GET("ciudad")
     fun getCiudades(): Observable<ArrayList<mCiudad>>
 
 }

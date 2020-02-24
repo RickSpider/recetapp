@@ -258,7 +258,15 @@ class PacienteFragment : Fragment() {
         if(resume){
 
             //Toast.makeText(this.context,"Resumio",Toast.LENGTH_LONG).show()
-            loadJsonReceta()
+            if (args.medico){
+
+                loadJsonRecetaPorMedico()
+
+            }else{
+
+                loadJsonReceta()
+
+            }
 
         }
 

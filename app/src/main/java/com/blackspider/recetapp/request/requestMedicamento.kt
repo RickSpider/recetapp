@@ -6,7 +6,7 @@ import retrofit2.http.GET
 
 interface requestMedicamento{
 
-    @GET("medicamento/")
+    @GET("medicamento")
     fun getmedicamento(): Observable<ArrayList<mMedicamento>>
 
 }

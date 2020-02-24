@@ -14,7 +14,7 @@ interface requestMedico {
     @GET("medico/{id}")
     fun getOneMedico(@Path("id") id: Long): Observable<mMedico>
 
-    @POST("medico/")
+    @POST("medico")
     fun postMedico(@Body mmmedico: mMedico): Completable
 
 }

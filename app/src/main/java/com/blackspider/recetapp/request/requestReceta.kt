@@ -15,7 +15,7 @@ interface requestReceta{
     @GET("receta/paciente/{pacienteid}")
     fun getRecetaPaciente(@Path("pacienteid") pacienteid :  Long): Observable<ArrayList<mReceta>>
 
-    @GET("receta/paciente/{pacienteid}/{medicoid}")
+    @GET("receta/paciente/{pacienteid}/medico/{medicoid}")
     fun getRecetaPaciente(@Path("pacienteid") pacienteid :  Long,@Path("medicoid") medicoid : Long): Observable<ArrayList<mReceta>>
 
     @GET("receta/detalles/{recetaid}")
@@ -24,7 +24,7 @@ interface requestReceta{
     @GET("receta/{recetaid}")
     fun getReceta (@Path("recetaid") recetaid : Long) : Observable<mReceta>
 
-    @POST("receta/")
+    @POST("receta")
     fun postReceta (@Body mreceta : mReceta) : Completable
 
 }
