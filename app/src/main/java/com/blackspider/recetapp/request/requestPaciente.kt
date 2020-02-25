@@ -13,7 +13,7 @@ interface requestPaciente{
     @GET("paciente/{pacienteid}")
     fun getPaciente(@Path("pacienteid") pacienteid :  Long): Observable<mPaciente>
 
-    @POST("paciente")
+    @POST("pacientes")
     fun postPaciente(@Body mPaciente: mPaciente):Completable
 
 }

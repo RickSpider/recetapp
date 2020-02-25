@@ -7,7 +7,7 @@ import retrofit2.http.GET
 
 interface requestTitulo{
 
-    @GET("titulo")
+    @GET("titulos")
     fun getTitulos() : Observable<List<mTitulo>>
 
 }
