@@ -12,10 +12,10 @@ import kotlin.collections.ArrayList
 
 interface requestReceta{
 
-    @GET("receta/paciente/{pacienteid}")
+    @GET("recetas/paciente/{pacienteid}")
     fun getRecetaPaciente(@Path("pacienteid") pacienteid :  Long): Observable<ArrayList<mReceta>>
 
-    @GET("receta/paciente/{pacienteid}/medico/{medicoid}")
+    @GET("recetas/paciente/{pacienteid}/medico/{medicoid}")
     fun getRecetaPaciente(@Path("pacienteid") pacienteid :  Long,@Path("medicoid") medicoid : Long): Observable<ArrayList<mReceta>>
 
     @GET("receta/detalles/{recetaid}")
@@ -24,7 +24,7 @@ interface requestReceta{
     @GET("receta/{recetaid}")
     fun getReceta (@Path("recetaid") recetaid : Long) : Observable<mReceta>
 
-    @POST("recetas")
+    @POST("receta")
     fun postReceta (@Body mreceta : mReceta) : Completable
 
 }

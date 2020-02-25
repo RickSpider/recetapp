@@ -36,6 +36,7 @@ class PerfilFragmentEdit : Fragment() {
     private lateinit var mCompositeDisposable : CompositeDisposable
     // private var pacienteid : Long = 1
     private val args : PerfilFragmentArgs by navArgs()
+    private lateinit var medico : mMedico
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -83,7 +84,32 @@ class PerfilFragmentEdit : Fragment() {
 
     }
 
+    fun putJsonMedico(){
+
+        medico.mpersona!!.direccion= etvDireccion.text.toString()
+        medico.mpersona!!.celular = etvCelular.text.toString()
+        medico.mpersona!!.email = etvEmail.text.toString()
+
+        val retrofit = connector().create(requestMedico::class.java)
+        mCompositeDisposable.add(
+            retrofit.putMedico(medico)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(this::handlePutMedico, this::handleError)
+        )
+
+
+    }
+
+    private fun handlePutMedico(){
+
+
+
+    }
+
     private fun handleMedico(mmedico : mMedico){
+
+        medico = mmedico
 
         tvFullNombre.text = "${mmedico.mtitulo!!.titulo} ${mmedico.mpersona!!.nombre} ${mmedico.mpersona.apellido}"
         tvCI.text = mmedico.mpersona!!.ci
@@ -172,9 +198,6 @@ class PerfilFragmentEdit : Fragment() {
             tvSexo.text = "Femenino"
 
         }
-
-
-
 
     }
 
