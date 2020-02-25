@@ -71,10 +71,6 @@ class PerfilFragment : Fragment() {
 
         }
 
-
-
-
-
     }
 
     fun loadJsonMedico () {
@@ -132,24 +128,6 @@ class PerfilFragment : Fragment() {
         tvGrupoS.isVisible = false
         ibReceta.isVisible = false
 
-        if(args.medicoid == null && args.id != null){
-
-            ibReceta.visibility = View.GONE
-
-        }
-
-        if(args.id != null && args.medicoid != null){
-
-            botonEditar.isVisible = false
-
-        }
-
-        if (args.medicoid == 0L && args.medico == false){
-
-            ibReceta.visibility = View.GONE
-
-        }
-
 
 
     }
@@ -183,11 +161,6 @@ class PerfilFragment : Fragment() {
             tvSexo.text = "Femenino"
 
         }
-
-
-
-
-
 
     }
 
