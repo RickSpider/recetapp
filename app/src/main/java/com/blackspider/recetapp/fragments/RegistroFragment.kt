@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.blackspider.recetapp.R
 import com.blackspider.recetapp.model.*
 import com.blackspider.recetapp.recursos.connector
@@ -204,7 +205,8 @@ class RegistroFragment : Fragment(R.layout.fragment_registro) {
 
     private fun handlePost(){
 
-        Toast.makeText(this.context, "Se Posteo", Toast.LENGTH_LONG).show()
+        Toast.makeText(this.context, "Se guardaron los datos", Toast.LENGTH_LONG).show()
+        findNavController().popBackStack()
 
     }
 

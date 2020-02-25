@@ -56,6 +56,12 @@ class PerfilFragmentEdit : Fragment() {
 
         }
 
+        botonEditar.setOnClickListener{
+
+            putJsonMedico()
+
+        }
+
         mCompositeDisposable = CompositeDisposable()
 
         if (args.medico){
@@ -84,7 +90,7 @@ class PerfilFragmentEdit : Fragment() {
 
     }
 
-    fun putJsonMedico(){
+    private fun putJsonMedico(){
 
         medico.mpersona!!.direccion= etvDireccion.text.toString()
         medico.mpersona!!.celular = etvCelular.text.toString()
@@ -101,9 +107,11 @@ class PerfilFragmentEdit : Fragment() {
 
     }
 
+
+
     private fun handlePutMedico(){
 
-
+        findNavController().popBackStack()
 
     }
 
