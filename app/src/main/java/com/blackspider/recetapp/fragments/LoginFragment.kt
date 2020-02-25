@@ -16,6 +16,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_login.*
+import retrofit2.HttpException
 
 
 /**
@@ -131,7 +132,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private fun handleLogin(login: mLogin){
 
-        if(login != null){
+        if(login.id != null){
 
             val navBuilder = NavOptions.Builder()
             val navOptions: NavOptions = navBuilder.setPopUpTo(R.id.nav_graph,true).build()
@@ -163,8 +164,18 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private fun handleError(error: Throwable) {
 
-        Toast.makeText(this.context, "Error ${error.localizedMessage}", Toast.LENGTH_LONG).show()
-        println(error.localizedMessage)
+
+
+        if ((error as HttpException).code() == 401){
+
+            Toast.makeText(this.context,"Usuario o contraseña no validos",Toast.LENGTH_LONG).show()
+
+        }else{
+
+            Toast.makeText(this.context, "Error ${error.localizedMessage}", Toast.LENGTH_LONG).show()
+            println((error as HttpException).code())
+
+        }
 
     }
 
